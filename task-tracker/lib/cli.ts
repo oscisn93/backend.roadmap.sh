@@ -41,7 +41,7 @@ class TaskTracker implements CLI {
         if (options.length < 2) {
           console.error("task-cli commands 'update' requires two positional arguments, however that constraint was not met. The first argument must be a taskID and te secode")
         }
-        switch(options) {
+        switch (options) {
 
         }
     }

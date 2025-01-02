@@ -1,22 +1,12 @@
 import {
+  ActionStatus,
   Task,
-  TaskStatus
+  TaskStatus,
+  TaskTrackerDatabase,
 } from './types';
 import {
   JSON_FILE_PATH
 } from './constants';
-
-
-type ActionStatus = 'SUCCESS' | 'FAILURE';
-
-interface TaskTrackerDatabase {
-  getTasks(filter: TaskStatus): Promise<Task[]>,
-  getTask(id: number): Promise<Task | null>,
-  addTask(description: string): Promise<ActionStatus>,
-  deleteTask(id: number): Promise<ActionStatus>,
-  updateTaskStatus(id: number, description: string): Promise<ActionStatus>,
-  updateTaskStatus(id: number, status: TaskStatus): Promise<ActionStatus>
-}
 
 function currentTimestamp(): string {
   const date = new Date();
@@ -24,7 +14,7 @@ function currentTimestamp(): string {
   return timestamp;
 }
 
-function createTask(id: number, description: string) {
+function createTask(id: number, description: string): Task {
   const task = {
     id,
     description,
@@ -34,18 +24,13 @@ function createTask(id: number, description: string) {
   return task;
 }
 
-function printTask(task: Task){
-  return `{ id: ${
-    this._id
-  }, description: ${
-    this.description
-  }, status: ${
-    this.status
-  }, createdAt: ${
-    this.createdAt
-  }${
-    !!this.updatedAt ? `, updatedAt: ${this.updatedAt} ` : " "
-  }}`;
+export function printTask(task: Task): void {
+  console.log(`{ id: ${this._id
+    }, description: ${this.description
+    }, status: ${this.status
+    }, createdAt: ${this.createdAt
+    }${!!this.updatedAt ? `, updatedAt: ${this.updatedAt} ` : " "
+    }}`);
 }
 
 function updateTask(
@@ -64,18 +49,18 @@ function updateTask(
   return task;
 }
 
-export class TaskDB implements TaskTrackerDatabase {
-  private static instance?: TaskDB;
+export class Database implements TaskTrackerDatabase {
+  private static instance?: Database;
   private tasks: Task[];
   private counter: number;
   private isSparse: boolean;
   constructor() {
-    if (!TaskDB.instance) {
-      TaskDB.instance = this;
+    if (!Database.instance) {
+      Database.instance = this;
     }
     this.getSavedTasks();
     this.isSparse = false;
-    return TaskDB.instance;
+    return Database.instance;
   }
 
   private compressTasksArray(): void {
@@ -112,7 +97,7 @@ export class TaskDB implements TaskTrackerDatabase {
       const data = JSON.stringify({ tasks: this.tasks });
       // @ts-ignore: Deno namespace conflicts with tsserver
       await Deno.writeTextFile(JSON_FILE_PATH, data);
-    } catch(err) {
+    } catch (err) {
       console.error((err as Error).message)
     }
   }
@@ -125,7 +110,11 @@ export class TaskDB implements TaskTrackerDatabase {
     const id = this.getNextID();
     const task = createTask(id, description);
     this.tasks.push(task);
-    return 'SUCCESS' as ActionStatus;
+    return {
+      id,
+      status: 'SUCCESS' as ActionStatus,
+      task: task
+    };
   }
 
   async getTasks(filter: TaskStatus = "TODO") {
@@ -181,7 +170,7 @@ export class TaskDB implements TaskTrackerDatabase {
       await this.getSavedTasks();
     }
     if (id >= this.counter) {
-        return 'FAILURE'
+      return 'FAILURE'
     }
     delete this.tasks[id];
     return 'SUCCESS';

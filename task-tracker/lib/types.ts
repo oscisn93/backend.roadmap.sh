@@ -8,6 +8,23 @@ export interface Task {
   updatedAt?: string;
 }
 
+export type ActionStatus = 'SUCCESS' | 'FAILURE';
+
+export type TaskMutationResult = {
+  id: number;
+  status: ActionStatus;
+  task?: Task;
+}
+
+export interface TaskTrackerDatabase {
+  getTasks(filter: TaskStatus): Promise<Task[]>,
+  getTask(id: number): Promise<Task | null>,
+  addTask(description: string): Promise<TaskMutationResult>,
+  deleteTask(id: number): Promise<TaskMutationResult>,
+  updateTaskStatus(id: number, description: string): Promise<TaskMutationResult>,
+  updateTaskStatus(id: number, status: TaskStatus): Promise<TaskMutationResult>
+}
+
 export type CommandAction = "ADD" | "UPDATE" | "DELETE" | "LIST";
 
 export type CommandOptions = "TASK_ID" | "DESCRIPTION" | "STATUS";
