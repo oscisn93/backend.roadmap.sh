@@ -53,12 +53,12 @@ task-cli list in-progress
 ### Data Model ###
 
 ```typescript
-type Task = {
-    id: number;
-    description: string;
-    status: 'TODO' | 'IN_PROGRESS' | 'DONE';
-    createdAt: string | Date;
-    updatedAt: string | Date;
+interface Task {
+    id: number,
+    description: string,
+    status: 'TODO' | 'IN_PROGRESS' | 'DONE',
+    createdAt: string | Date,
+    updatedAt: string | Date
 }
 ```
 
