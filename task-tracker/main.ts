@@ -1,3 +1,1 @@
-function main() {
-  console.log("NOT IMPLEMENTED")
-}
+import {parse} from "@std/flags";

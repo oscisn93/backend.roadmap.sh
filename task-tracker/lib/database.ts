@@ -146,11 +146,18 @@ export class Database implements TaskTrackerDatabase {
       await this.getSavedTasks();
     }
     if (id >= this.counter) {
-      return 'FAILURE';
+    return {
+        id,
+        status: 'FAILURE' as ActionStatus,
+      }
     }
     const task = this.tasks[id];
     updateTask(task, description, undefined);
-    return 'SUCCESS'
+    return {
+      id,
+      status: 'SUCCESS' as ActionStatus,
+      task
+    }
   }
 
   async updateTaskStatus(id: number, status: TaskStatus) {
@@ -158,11 +165,18 @@ export class Database implements TaskTrackerDatabase {
       await this.getSavedTasks();
     }
     if (id >= this.counter) {
-      return 'FAILURE';
+      return {
+        id,
+        status: 'FAILURE' as ActionStatus,
+      };
     }
     const task = this.tasks[id];
     updateTask(task, undefined, status)
-    return 'SUCCESS'
+    return {
+      id,
+      status: 'SUCCESS' as ActionStatus,
+      task
+    }
   }
 
   async deleteTask(id: number) {
@@ -170,10 +184,16 @@ export class Database implements TaskTrackerDatabase {
       await this.getSavedTasks();
     }
     if (id >= this.counter) {
-      return 'FAILURE'
+      return {
+        id,
+        status: 'FAILURE' as ActionStatus
+      }
     }
     delete this.tasks[id];
-    return 'SUCCESS';
+    return {
+      id,
+      status: 'SUCCESS' as ActionStatus,
+    }
   }
 }
 

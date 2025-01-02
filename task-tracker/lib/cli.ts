@@ -1,15 +1,16 @@
-import type { Command, CLI } from "./types";
-import { TaskDB } from "./database";
+import type { Command, CLI, TaskStatus } from "./types";
+import { Database } from "./database";
+import { UPDATE_MISSING_ARGS } from "./constants";
 
 class TaskTracker implements CLI {
-  private database: TaskDB;
+  private database: Database;
   constructor() {
-    this.database = new TaskDB();
+    this.database = new Database();
   }
-  list(): void {
+  list(filter?: TaskStatus): void {
     throw new Error("Method not implemented.");
   }
-  update(): void {
+  update(id: number, description: string): void {
     throw new Error("Method not implemented.");
   }
   delete(): void {
@@ -24,26 +25,28 @@ class TaskTracker implements CLI {
   markDone(): void {
     throw new Error("Method not implemented.");
   }
-  private parseInput(cmd: Command, database: TaskDB) {
+  private parseInput(cmd: Command, database: Database) {
     const { action, options } = cmd;
     switch (action) {
       case "ADD":
         if (options.length < 1) {
-          console.error("task-cli command 'add' requires one positional argument [description] but none was supplied");
+          console.error(
+            "task-cli command 'add' requires one positional argument [description] but none was supplied"
+          );
         }
-        return database.addTask(options[1])
+        return database.addTask(options[1]);
       case "DELETE":
         if (options.length < 1) {
-          console.error("Must specify a valid taskID in order to delete a task");
+          console.error(
+            "Must specify a valid taskID in order to delete a task"
+          );
         }
-        return database.deleteTask(parseInt(options[1]));
+        return this.delete(parseInt(options[1]));
       case "UPDATE":
         if (options.length < 2) {
-          console.error("task-cli commands 'update' requires two positional arguments, however that constraint was not met. The first argument must be a taskID and te secode")
+          console.error(UPDATE_MISSING_ARGS);
         }
-        switch (options) {
-
-        }
+        let taskID = parseInt(options[0]);
     }
   }
 }

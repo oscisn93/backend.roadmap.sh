@@ -8,21 +8,24 @@ export interface Task {
   updatedAt?: string;
 }
 
-export type ActionStatus = 'SUCCESS' | 'FAILURE';
+export type ActionStatus = "SUCCESS" | "FAILURE";
 
 export type TaskMutationResult = {
   id: number;
   status: ActionStatus;
   task?: Task;
-}
+};
 
 export interface TaskTrackerDatabase {
-  getTasks(filter: TaskStatus): Promise<Task[]>,
-  getTask(id: number): Promise<Task | null>,
-  addTask(description: string): Promise<TaskMutationResult>,
-  deleteTask(id: number): Promise<TaskMutationResult>,
-  updateTaskStatus(id: number, description: string): Promise<TaskMutationResult>,
-  updateTaskStatus(id: number, status: TaskStatus): Promise<TaskMutationResult>
+  getTasks(filter: TaskStatus): Promise<Task[]>;
+  getTask(id: number): Promise<Task | null>;
+  addTask(description: string): Promise<TaskMutationResult>;
+  deleteTask(id: number): Promise<TaskMutationResult>;
+  updateTaskStatus(
+    id: number,
+    description: string
+  ): Promise<TaskMutationResult>;
+  updateTaskStatus(id: number, status: TaskStatus): Promise<TaskMutationResult>;
 }
 
 export type CommandAction = "ADD" | "UPDATE" | "DELETE" | "LIST";
@@ -33,12 +36,3 @@ export type Command = {
   action: CommandAction;
   options: CommandOptions[];
 };
-
-export interface CLI {
-  list(): void,
-  update(): void,
-  delete(): void,
-  add(): void,
-  markInProgress(): void,
-  markDone(): void
-}
