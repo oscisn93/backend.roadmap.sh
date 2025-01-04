@@ -1,4 +1,4 @@
-export type TaskStatus = "TODO" | "IN_PROGRESS" | "DONE";
+export type TaskStatus = "TODO" | "IN-PROGRESS" | "DONE";
 
 export interface Task {
   readonly id: number;
@@ -17,22 +17,25 @@ export type TaskMutationResult = {
 };
 
 export interface TaskTrackerDatabase {
-  getTasks(filter: TaskStatus): Promise<Task[]>;
-  getTask(id: number): Promise<Task | null>;
+  getTasks(filter?: TaskStatus): Promise<Task[]>;
   addTask(description: string): Promise<TaskMutationResult>;
   deleteTask(id: number): Promise<TaskMutationResult>;
-  updateTaskStatus(
+  updateTaskDescription(
     id: number,
     description: string
   ): Promise<TaskMutationResult>;
   updateTaskStatus(id: number, status: TaskStatus): Promise<TaskMutationResult>;
 }
 
-export type CommandAction = "ADD" | "UPDATE" | "DELETE" | "LIST";
-
-export type CommandOptions = "TASK_ID" | "DESCRIPTION" | "STATUS";
+export type CommandAction =
+  | "ADD"
+  | "UPDATE"
+  | "DELETE"
+  | "LIST"
+  | "MARK-IN-PROGRESS"
+  | "MARK-DONE";
 
 export type Command = {
   action: CommandAction;
-  options: CommandOptions[];
+  options: (string | number)[];
 };

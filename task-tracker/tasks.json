@@ -1,3 +1,1 @@
-{
-  "tasks": []
-}
+{"tasks":[{"id":0,"description":"Buy groceries","createdAt":"2025-01-04T13:46:47.292Z","status":"DONE","updatedAt":"2025-01-04T14:24:00.477Z"},{"id":1,"description":"Buy a tv","createdAt":"2025-01-04T13:49:43.411Z","status":"IN-PROGRESS","updatedAt":"2025-01-04T14:21:29.244Z"},{"id":2,"description":"Buy a lamp","createdAt":"2025-01-04T13:49:48.593Z","status":"DONE","updatedAt":"2025-01-04T14:23:44.851Z"},{"id":3,"description":"Buy a cat","createdAt":"2025-01-04T14:25:02.477Z","status":"TODO"}]}

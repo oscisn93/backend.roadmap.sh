@@ -1,0 +1,7 @@
+{
+  "version": "4",
+  "remote": {
+    "https://deno.land/std@0.166.0/_util/asserts.ts": "d0844e9b62510f89ce1f9878b046f6a57bf88f208a10304aab50efcb48365272",
+    "https://deno.land/std@0.166.0/flags/mod.ts": "3b459daf581e047819b6b799c92b96c81b4eecbd5ea025643d54dc0abc6ac923"
+  }
+}

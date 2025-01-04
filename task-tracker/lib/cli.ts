@@ -1,52 +1,60 @@
-import type { Command, CLI, TaskStatus } from "./types";
-import { Database } from "./database";
-import { UPDATE_MISSING_ARGS } from "./constants";
+import type { Command } from "./types.ts";
+import { Database } from "./database.ts";
+import {
+  ADD_MISSIING_ARG,
+  DELETE_MISSING_ARG,
+  MARK_DONE_MISSING_ARG,
+  MARK_IN_PROGRESS_MISSING_ARG,
+  UPDATE_MISSING_ARGS,
+} from "./constants.ts";
 
-class TaskTracker implements CLI {
+export class CLI {
   private database: Database;
   constructor() {
     this.database = new Database();
   }
-  list(filter?: TaskStatus): void {
-    throw new Error("Method not implemented.");
-  }
-  update(id: number, description: string): void {
-    throw new Error("Method not implemented.");
-  }
-  delete(): void {
-    throw new Error("Method not implemented.");
-  }
-  add(): void {
-    throw new Error("Method not implemented.");
-  }
-  markInProgress(): void {
-    throw new Error("Method not implemented.");
-  }
-  markDone(): void {
-    throw new Error("Method not implemented.");
-  }
-  private parseInput(cmd: Command, database: Database) {
+  run(cmd: Command) {
     const { action, options } = cmd;
     switch (action) {
       case "ADD":
         if (options.length < 1) {
-          console.error(
-            "task-cli command 'add' requires one positional argument [description] but none was supplied"
-          );
+          console.error(ADD_MISSIING_ARG);
         }
-        return database.addTask(options[1]);
+        return this.database.addTask(options[0] as string);
       case "DELETE":
         if (options.length < 1) {
-          console.error(
-            "Must specify a valid taskID in order to delete a task"
-          );
+          console.error(DELETE_MISSING_ARG);
         }
-        return this.delete(parseInt(options[1]));
+        return this.database.deleteTask(options[0] as number);
       case "UPDATE":
         if (options.length < 2) {
           console.error(UPDATE_MISSING_ARGS);
         }
-        let taskID = parseInt(options[0]);
+        return this.database.updateTaskDescription(
+          options[0] as number,
+          options[1] as string
+        );
+      case "MARK-IN-PROGRESS":
+        if (options.length < 1) {
+          console.error(MARK_IN_PROGRESS_MISSING_ARG);
+        }
+        return this.database.updateTaskStatus(
+          options[0] as number,
+          "IN-PROGRESS"
+        );
+      case "MARK-DONE":
+        if (options.length < 1) {
+          console.error(MARK_DONE_MISSING_ARG);
+        }
+        return this.database.updateTaskStatus(
+          options[0] as number,
+          "DONE"
+        )
+      case "LIST":
+        if (options.length < 1) {
+          return this.database.getTasks();
+        }
+        return this.database.getTasks(options[0] as string);
     }
   }
 }

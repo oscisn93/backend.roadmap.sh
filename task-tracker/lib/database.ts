@@ -3,10 +3,8 @@ import {
   Task,
   TaskStatus,
   TaskTrackerDatabase,
-} from './types';
-import {
-  JSON_FILE_PATH
-} from './constants';
+} from "./types.ts";
+import { JSON_FILE_PATH } from "./constants.ts";
 
 function currentTimestamp(): string {
   const date = new Date();
@@ -19,25 +17,22 @@ function createTask(id: number, description: string): Task {
     id,
     description,
     createdAt: currentTimestamp(),
-    status: "TODO"
+    status: "TODO",
   } satisfies Task;
   return task;
 }
 
 export function printTask(task: Task): void {
-  console.log(`{ id: ${this._id
-    }, description: ${this.description
-    }, status: ${this.status
-    }, createdAt: ${this.createdAt
-    }${!!this.updatedAt ? `, updatedAt: ${this.updatedAt} ` : " "
-    }}`);
+  console.log(
+    `{ id: ${task.id}, description: ${task.description}, status: ${
+      task.status
+    }, createdAt: ${task.createdAt}${
+      task.updatedAt ? `, updatedAt: ${task.updatedAt} ` : " "
+    }}`
+  );
 }
 
-function updateTask(
-  task: Task,
-  description?: string,
-  status?: TaskStatus
-) {
+function updateTask(task: Task, description?: string, status?: TaskStatus) {
   if (description) {
     task.description = description;
     task.updatedAt = currentTimestamp();
@@ -51,30 +46,23 @@ function updateTask(
 
 export class Database implements TaskTrackerDatabase {
   private static instance?: Database;
-  private tasks: Task[];
-  private counter: number;
-  private isSparse: boolean;
+  private tasks!: Task[];
+  private counter!: number;
   constructor() {
     if (!Database.instance) {
       Database.instance = this;
     }
-    this.getSavedTasks();
-    this.isSparse = false;
     return Database.instance;
   }
 
   private compressTasksArray(): void {
-    if (this.isSparse) {
-      return;
-    }
-    this.tasks = this.tasks.filter(task => !!task);
-    this.isSparse = false;
+    this.tasks = this.tasks.filter((task) => !!task);
     return;
   }
 
   private async getSavedTasks(): Promise<Task[]> {
     this.tasks = [];
-    const data = await import(JSON_FILE_PATH, {
+    const data = await import(`.${JSON_FILE_PATH}`, {
       with: { type: "json" },
     });
     if (data.default.tasks) {
@@ -82,23 +70,22 @@ export class Database implements TaskTrackerDatabase {
         this.tasks.push(task);
       }
     }
-    const lastIdx = this.tasks.length;
-    if (lastIdx === 0) {
+    const lastIdx = this.tasks.length - 1;
+    if (lastIdx === -1) {
       this.counter = 0;
     } else {
-      this.counter = this.tasks[lastIdx].id;
+      this.counter = this.tasks[lastIdx].id + 1;
     }
     return this.tasks;
   }
 
   private async saveTasks() {
     try {
-      this.compressTasksArray()
       const data = JSON.stringify({ tasks: this.tasks });
       // @ts-ignore: Deno namespace conflicts with tsserver
       await Deno.writeTextFile(JSON_FILE_PATH, data);
     } catch (err) {
-      console.error((err as Error).message)
+      console.error((err as Error).message);
     }
   }
 
@@ -107,93 +94,75 @@ export class Database implements TaskTrackerDatabase {
   }
 
   async addTask(description: string) {
+    await this.getSavedTasks();
     const id = this.getNextID();
     const task = createTask(id, description);
     this.tasks.push(task);
+    await this.saveTasks();
     return {
       id,
-      status: 'SUCCESS' as ActionStatus,
-      task: task
+      status: "SUCCESS" as ActionStatus,
+      task: task,
     };
   }
 
-  async getTasks(filter: TaskStatus = "TODO") {
-    if (!this.tasks) {
-      await this.getSavedTasks();
+  async getTasks(statusFilter?: string) {
+    await this.getSavedTasks();
+    if (statusFilter) {
+      return this.tasks.filter((task) => task.status === statusFilter.toUpperCase());
     }
     return this.tasks;
   }
 
-  async getTask(id: number) {
-    if (!this.tasks) {
-      await this.getSavedTasks();
-    }
-    if (id >= this.counter) {
-      return null;
-    }
-    if (this.tasks[id].id !== id) {
-      const task = this.tasks.find((task: Task) => task.id === id);
-      if (!task) {
-        return null;
-      }
-      return task;
-    }
-    return this.tasks[id];
-  }
-
   async updateTaskDescription(id: number, description: string) {
-    if (!this.tasks) {
-      await this.getSavedTasks();
-    }
-    if (id >= this.counter) {
-    return {
-        id,
-        status: 'FAILURE' as ActionStatus,
-      }
-    }
-    const task = this.tasks[id];
-    updateTask(task, description, undefined);
-    return {
-      id,
-      status: 'SUCCESS' as ActionStatus,
-      task
-    }
-  }
-
-  async updateTaskStatus(id: number, status: TaskStatus) {
-    if (!this.tasks) {
-      await this.getSavedTasks();
-    }
+    await this.getSavedTasks();
     if (id >= this.counter) {
       return {
         id,
-        status: 'FAILURE' as ActionStatus,
+        status: "FAILURE" as ActionStatus,
       };
     }
     const task = this.tasks[id];
-    updateTask(task, undefined, status)
+    updateTask(task, description, undefined);
+    await this.saveTasks();
     return {
       id,
-      status: 'SUCCESS' as ActionStatus,
-      task
-    }
+      status: "SUCCESS" as ActionStatus,
+      task,
+    };
   }
 
-  async deleteTask(id: number) {
-    if (!this.tasks) {
-      await this.getSavedTasks();
-    }
+  async updateTaskStatus(id: number, status: TaskStatus) {
+    await this.getSavedTasks();
     if (id >= this.counter) {
       return {
         id,
-        status: 'FAILURE' as ActionStatus
-      }
+        status: "FAILURE" as ActionStatus,
+      };
     }
-    delete this.tasks[id];
+    const task = this.tasks[id];
+    updateTask(task, undefined, status);
+    await this.saveTasks();
     return {
       id,
-      status: 'SUCCESS' as ActionStatus,
+      status: "SUCCESS" as ActionStatus,
+      task,
+    };
+  }
+
+  async deleteTask(id: number) {
+    await this.getSavedTasks();
+    if (id >= this.counter) {
+      return {
+        id,
+        status: "FAILURE" as ActionStatus,
+      };
     }
+    this.tasks = this.tasks.filter(task => task.id !== id);
+    await this.saveTasks();
+    return {
+      id,
+      status: "SUCCESS" as ActionStatus,
+    };
   }
 }
-
