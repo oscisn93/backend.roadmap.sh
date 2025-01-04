@@ -22,7 +22,7 @@ export interface TaskTrackerDatabase {
   deleteTask(id: number): Promise<TaskMutationResult>;
   updateTaskDescription(
     id: number,
-    description: string
+    description: string,
   ): Promise<TaskMutationResult>;
   updateTaskStatus(id: number, status: TaskStatus): Promise<TaskMutationResult>;
 }

@@ -28,7 +28,7 @@ export function printTask(task: Task): void {
       task.status
     }, createdAt: ${task.createdAt}${
       task.updatedAt ? `, updatedAt: ${task.updatedAt} ` : " "
-    }}`
+    }}`,
   );
 }
 
@@ -109,7 +109,9 @@ export class Database implements TaskTrackerDatabase {
   async getTasks(statusFilter?: string) {
     await this.getSavedTasks();
     if (statusFilter) {
-      return this.tasks.filter((task) => task.status === statusFilter.toUpperCase());
+      return this.tasks.filter(
+        (task) => task.status === statusFilter.toUpperCase(),
+      );
     }
     return this.tasks;
   }
@@ -158,7 +160,7 @@ export class Database implements TaskTrackerDatabase {
         status: "FAILURE" as ActionStatus,
       };
     }
-    this.tasks = this.tasks.filter(task => task.id !== id);
+    this.tasks = this.tasks.filter((task) => task.id !== id);
     await this.saveTasks();
     return {
       id,
