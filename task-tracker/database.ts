@@ -1,23 +1,21 @@
 import {
   ActionStatus,
   Task,
-  TaskStatus,
-  TaskTrackerDatabase,
+  TaskStatus
 } from "./types.ts";
-import { JSON_FILE_PATH } from "./constants.ts";
 
-function currentTimestamp(): string {
+async function currentTimestamp(): Promise<string> {
   const date = new Date();
   const timestamp = date.toISOString();
   return timestamp;
 }
 
-function createTask(id: number, description: string): Task {
+async function createTask(id: number, description: string): Promise<Task> {
   const task = {
     id,
     description,
-    createdAt: currentTimestamp(),
-    status: "TODO",
+    createdAt: await currentTimestamp(),
+    status: "todo",
   } satisfies Task;
   return task;
 }
@@ -32,49 +30,49 @@ export function printTask(task: Task): void {
   );
 }
 
-function updateTask(task: Task, description?: string, status?: TaskStatus) {
+async function updateTask(
+  task: Task,
+  description?: string,
+  status?: TaskStatus
+) {
   if (description) {
     task.description = description;
-    task.updatedAt = currentTimestamp();
+    task.updatedAt = await currentTimestamp();
   }
   if (status) {
     task.status = status;
-    task.updatedAt = currentTimestamp();
+    task.updatedAt = await currentTimestamp();
   }
   return task;
 }
 
-export class Database implements TaskTrackerDatabase {
+export class Database {
   private static instance?: Database;
+  private filename: string;
   private tasks!: Task[];
   private counter!: number;
-  constructor() {
+  constructor(filename: string) {
     if (!Database.instance) {
       Database.instance = this;
     }
+    this.filename = filename;
     return Database.instance;
-  }
-
-  private compressTasksArray(): void {
-    this.tasks = this.tasks.filter((task) => !!task);
-    return;
   }
 
   private async getSavedTasks(): Promise<Task[]> {
     this.tasks = [];
-    const data = await import(`.${JSON_FILE_PATH}`, {
-      with: { type: "json" },
-    });
-    if (data.default.tasks) {
-      for (const task of data.default.tasks as Task[]) {
+    // @ts-ignore: Deno namespace conflicts with tsserver
+    const jsonFileText = Deno.readTextFileSync(this.filename);
+    const data = JSON.parse(jsonFileText)   
+    if (data && data.tasks) {
+      for (const task of data.tasks as Task[]) {
         this.tasks.push(task);
       }
     }
-    const lastIdx = this.tasks.length - 1;
-    if (lastIdx === -1) {
-      this.counter = 0;
+    if (this.tasks.length === 0) {
+      this.counter = this.tasks.length;
     } else {
-      this.counter = this.tasks[lastIdx].id + 1;
+      this.counter = this.tasks[this.tasks.length - 1].id + 1;
     }
     return this.tasks;
   }
@@ -83,20 +81,20 @@ export class Database implements TaskTrackerDatabase {
     try {
       const data = JSON.stringify({ tasks: this.tasks });
       // @ts-ignore: Deno namespace conflicts with tsserver
-      await Deno.writeTextFile(JSON_FILE_PATH, data);
+      await Deno.writeTextFile(this.filename, data);
     } catch (err) {
       console.error((err as Error).message);
     }
   }
 
-  private getNextID() {
+  private async getNextID(): Promise<number> {
     return this.counter++;
   }
 
   async addTask(description: string) {
     await this.getSavedTasks();
-    const id = this.getNextID();
-    const task = createTask(id, description);
+    const id = await this.getNextID();
+    const task = await createTask(id, description);
     this.tasks.push(task);
     await this.saveTasks();
     return {
@@ -125,7 +123,7 @@ export class Database implements TaskTrackerDatabase {
       };
     }
     const task = this.tasks[id];
-    updateTask(task, description, undefined);
+    await updateTask(task, description, undefined);
     await this.saveTasks();
     return {
       id,
@@ -143,7 +141,7 @@ export class Database implements TaskTrackerDatabase {
       };
     }
     const task = this.tasks[id];
-    updateTask(task, undefined, status);
+    await updateTask(task, undefined, status);
     await this.saveTasks();
     return {
       id,

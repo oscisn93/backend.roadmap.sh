@@ -1,27 +1,32 @@
 import type { Command, CommandAction } from "./types.ts";
 import { Database } from "./database.ts";
-import {
-  ADD_MISSIING_ARG,
-  DELETE_MISSING_ARG,
-  MARK_DONE_MISSING_ARG,
-  MARK_IN_PROGRESS_MISSING_ARG,
-  UPDATE_MISSING_ARGS,
-} from "./constants.ts";
+
+export const ADD_MISSIING_ARG =
+  "task-cli command 'add' requires one positional argument [description] but none was supplied";
+export const UPDATE_MISSING_ARGS =
+  "task-cli command 'update' requires two positional arguments, however that constraint was not met, Requires: [id: number, description: string].";
+export const DELETE_MISSING_ARG =
+  "task-cli command 'delete' requires one postional argument [id] but none was supplied.";
+export const MARK_IN_PROGRESS_MISSING_ARG =
+  "task-cli command 'mark-in-progress' requires one positional argument [id] but none was supplied.";
+export const MARK_DONE_MISSING_ARG =
+  "task-cli command 'mark-done' requires one positional argument [id] but none was supplied.";
 
 export class CLI {
   private database: Database;
   private command: Command;
   constructor(args: (string | number)[]) {
-    this.database = new Database();
+    const filename = "./tasks.json";
+    this.database = new Database(filename);
     this.command = this.createCommand(args);
   }
+
   private createCommand(args: (string | number)[]) {
-    const cmdName = args[0] as string;
-    const action = cmdName.toUpperCase() as CommandAction;
+    const action = args[0] as CommandAction;
     args.shift();
     return {
       action: action,
-      options: args,
+      options: args
     };
   }
 
@@ -31,17 +36,17 @@ export class CLI {
       options
     } = this.command;
     switch (action) {
-      case "ADD":
+      case "add":
         if (options.length < 1) {
           console.error(ADD_MISSIING_ARG);
         }
         return this.database.addTask(options[0] as string);
-      case "DELETE":
+      case "delete":
         if (options.length < 1) {
           console.error(DELETE_MISSING_ARG);
         }
         return this.database.deleteTask(options[0] as number);
-      case "UPDATE":
+      case "update":
         if (options.length < 2) {
           console.error(UPDATE_MISSING_ARGS);
         }
@@ -49,20 +54,23 @@ export class CLI {
           options[0] as number,
           options[1] as string,
         );
-      case "MARK-IN-PROGRESS":
+      case "mark-in-progress":
         if (options.length < 1) {
           console.error(MARK_IN_PROGRESS_MISSING_ARG);
         }
         return this.database.updateTaskStatus(
           options[0] as number,
-          "IN-PROGRESS",
+          "in-progress",
         );
-      case "MARK-DONE":
+      case "mark-done":
         if (options.length < 1) {
           console.error(MARK_DONE_MISSING_ARG);
         }
-        return this.database.updateTaskStatus(options[0] as number, "DONE");
-      case "LIST":
+        return this.database.updateTaskStatus(
+          options[0] as number,
+          "done"
+        );
+      case "list":
         if (options.length < 1) {
           return this.database.getTasks();
         }
@@ -70,3 +78,4 @@ export class CLI {
     }
   }
 }
+

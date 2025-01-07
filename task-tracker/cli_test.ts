@@ -1,7 +1,7 @@
-import { ActionStatus, TaskMutationResult } from './lib/types.ts';
+import { ActionStatus, TaskMutationResult } from './types.ts';
 // @ts-ignore: Deno std lib
 import { assertEquals } from "@std/testing/asserts";
-import { CLI } from './lib/cli.ts';
+import { CLI } from './cli.ts';
 
 // @ts-ignore: Deno namespace
 Deno.test("CLI should take the arguments ['add', 'some task'] in and return an object with a numeric id, a success status message, and the task object that was added. The json file should contain that same object.", async () => {
@@ -15,11 +15,11 @@ Deno.test("CLI should take the arguments ['add', 'some task'] in and return an o
       id: 0,
       description: 'some task',
       createdAt: results.task!.createdAt,
-      status: "TODO"
+      status: "todo"
     },
   })
   // @ts-ignore: Deno namespace
-  const jsonFile = await Deno.readTextFile('./tasks.json');
+  const jsonFile = Deno.readTextFileSync('./tasks.json');
   const jsonTasks = JSON.parse(jsonFile).tasks;
   assertEquals(results.task!, jsonTasks[0]);
 });
@@ -37,7 +37,7 @@ Deno.test("CLI should allow users to update the task description by passing the 
       id: 0,
       description: 'new description for some task',
       createdAt: results.task!.createdAt,
-      status: "TODO",
+      status: "todo",
       updatedAt: results.task!.updatedAt!
     },
   })
