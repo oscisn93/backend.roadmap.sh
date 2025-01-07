@@ -1,7 +1,7 @@
 # Task Tracker #
 
 **Descriptions**: A simple CLI to keep track of our daily tasks created using TypeScript on Deno.
-**Project URL**: https://github.com/oscisn93/backend.roadmap.sh/task-tracker
+**Project URL**: https://roadmap.sh/projects/task-tracker
 
 ### Requirements ###
 
