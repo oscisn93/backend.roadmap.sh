@@ -14,6 +14,7 @@ This repository is dedicated to documenting myself working through the projects 
 ## GitHub User Activity ##
 
 **Descriptions**: A CLI to show recent user activity from the GitHub api created using Go.\
+
 **Project URL**: https://roadmap.sh/projects/github-user-activity
 
 
