@@ -1,57 +1,23 @@
-import { ActionStatus, Task, TaskStatus, TaskMutationResult } from "./types.ts";
-
-async function currentTimestamp(): Promise<string> {
-  const date = new Date();
-  const timestamp = date.toISOString();
-  return timestamp;
-}
-
-async function createTask(id: number, description: string): Promise<Task> {
-  const task = {
-    id,
-    description,
-    createdAt: await currentTimestamp(),
-    status: "todo",
-  } satisfies Task;
-  return task;
-}
-
-export function printTask(task: Task): void {
-  console.log(
-    `{ id: ${task.id}, description: ${task.description}, status: ${
-      task.status
-    }, createdAt: ${task.createdAt}${
-      task.updatedAt ? `, updatedAt: ${task.updatedAt} ` : " "
-    }}`,
-  );
-}
-
-async function updateTask(
-  task: Task,
-  description?: string,
-  status?: TaskStatus,
-) {
-  if (description) {
-    task.description = description;
-    task.updatedAt = await currentTimestamp();
-  }
-  if (status) {
-    task.status = status;
-    task.updatedAt = await currentTimestamp();
-  }
-  return task;
-}
+import {
+  ActionStatus,
+  Task,
+  TaskStatus,
+  TaskMutationResult,
+  TimestampProvider,
+} from "./types.ts";
 
 export class Database {
   private static instance?: Database;
   private filename: string;
   private tasks!: Task[];
   private counter!: number;
-  constructor(filename: string) {
+  private timestampProvider: TimestampProvider;
+  constructor(filename: string, timestampProvider: TimestampProvider) {
     if (!Database.instance) {
       Database.instance = this;
     }
     this.filename = filename;
+    this.timestampProvider = timestampProvider;
     return Database.instance;
   }
 
@@ -87,31 +53,61 @@ export class Database {
     return this.counter++;
   }
 
+  printTask(task: Task): void {
+    console.log(
+      `{ id: ${task.id}, description: ${task.description}, status: ${
+        task.status
+      }, createdAt: ${task.createdAt}${
+        task.updatedAt ? `, updatedAt: ${task.updatedAt} ` : " "
+      }}`,
+    );
+  }
+
+  private async createTask(id: number, description: string): Promise<Task> {
+    const task = {
+      id,
+      description,
+      createdAt: await this.timestampProvider.getCurrentTimestamp(),
+      status: "todo",
+    } satisfies Task;
+    return task;
+  }
+
   async addTask(description: string): Promise<TaskMutationResult> {
     await this.getSavedTasks();
     const id = await this.getNextID();
-    const task = await createTask(id, description);
+    const task = await this.createTask(id, description);
     this.tasks.push(task);
     await this.saveTasks();
     return {
       id,
       status: "SUCCESS" as ActionStatus,
-      taskInfo: {
-        description: task.description,
-        status: task.status,
-      },
+      task
     };
   }
 
   async getTasks(statusFilter?: TaskStatus) {
     await this.getSavedTasks();
-    console.log(statusFilter)
     if (statusFilter) {
-      return this.tasks.filter(
-        (task) => task.status === statusFilter
-      );
+      return this.tasks.filter((task) => task.status === statusFilter);
     }
     return this.tasks;
+  }
+
+  private async updateTask(
+    task: Task,
+    description?: string,
+    status?: TaskStatus,
+  ) {
+    if (description) {
+      task.description = description;
+      task.updatedAt = await this.timestampProvider.getCurrentTimestamp();
+    }
+    if (status) {
+      task.status = status;
+      task.updatedAt = await this.timestampProvider.getCurrentTimestamp();
+    }
+    return task;
   }
 
   async updateTaskDescription(id: number, description: string) {
@@ -120,19 +116,16 @@ export class Database {
       return {
         id,
         status: "FAILURE" as ActionStatus,
-        taskInfo: null,
+        task: null,
       };
     }
     const task = this.tasks[id];
-    await updateTask(task, description, undefined);
+    await this.updateTask(task, description, undefined);
     await this.saveTasks();
     return {
       id,
       status: "SUCCESS" as ActionStatus,
-      taskInfo: {
-        description: task.description,
-        status: task.status,
-      },
+      task
     };
   }
 
@@ -142,19 +135,16 @@ export class Database {
       return {
         id,
         status: "FAILURE" as ActionStatus,
-        taskInfo: null,
+        task: null,
       };
     }
     const task = this.tasks[id];
-    await updateTask(task, undefined, status);
+    await this.updateTask(task, undefined, status);
     await this.saveTasks();
     return {
       id,
       status: "SUCCESS" as ActionStatus,
-      taskInfo: {
-        description: task.description,
-        status: task.status,
-      },
+      task
     };
   }
 
@@ -164,7 +154,7 @@ export class Database {
       return {
         id,
         status: "FAILURE" as ActionStatus,
-        taskInfo: null,
+        task: null
       };
     }
     this.tasks = this.tasks.filter((task) => task.id !== id);
@@ -172,7 +162,7 @@ export class Database {
     return {
       id,
       status: "SUCCESS" as ActionStatus,
-      taskInfo: null,
+      task: null,
     };
   }
 }

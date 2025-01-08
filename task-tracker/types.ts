@@ -10,10 +10,12 @@ export interface Task {
 
 export type ActionStatus = "SUCCESS" | "FAILURE";
 
+export type Nullable<T> = T | null;
+
 export type TaskMutationResult = {
   id: number;
   status: ActionStatus;
-  taskInfo: Pick<Task, "description" | "status"> | null;
+  task: Nullable<Task>
 };
 
 export type CommandAction =
@@ -28,3 +30,7 @@ export type Command = {
   action: CommandAction;
   options: (string | number)[];
 };
+
+export interface TimestampProvider {
+  getCurrentTimestamp: () => Promise<string>;
+}

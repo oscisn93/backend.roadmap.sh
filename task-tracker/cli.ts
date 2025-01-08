@@ -1,4 +1,4 @@
-import type { CommandAction } from "./types.ts";
+import type { CommandAction, TimestampProvider, TaskStatus } from "./types.ts";
 import { Database } from "./database.ts";
 
 export const ADD_MISSIING_ARG =
@@ -14,9 +14,9 @@ export const MARK_DONE_MISSING_ARG =
 
 export class CLI {
   private database: Database;
-  constructor() {
+  constructor(timestampProvider: TimestampProvider) {
     const filename = "./tasks.json";
-    this.database = new Database(filename);
+    this.database = new Database(filename, timestampProvider);
   }
 
   private createCommand(args: (string | number)[]) {
@@ -66,7 +66,7 @@ export class CLI {
         if (options.length < 1) {
           return this.database.getTasks();
         }
-        return this.database.getTasks(options[0] as string);
+        return this.database.getTasks(options[0] as TaskStatus);
     }
   }
 }
