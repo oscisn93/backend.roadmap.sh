@@ -1,10 +1,10 @@
 {
   "imports": {
-    "@std/flags": "https://deno.land/std@0.166.0/flags/mod.ts"
+    "@std/flags": "https://deno.land/std@0.166.0/flags/mod.ts",
     "@std/testing/asserts": "https://deno.land/std@0.200.0/testing/asserts.ts"
   },
   "tasks": {
     "test": "deno test --allow-net --allow-env --allow-read --allow-write --no-check",
     "build": "deno compile --allow-write --allow-read --allow-net --allow-env --include ./tasks.json -o task-cli main.ts"
-  },
+  }
 }

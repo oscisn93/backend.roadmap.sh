@@ -1,8 +1,4 @@
-import {
-  ActionStatus,
-  Task,
-  TaskStatus
-} from "./types.ts";
+import { ActionStatus, Task, TaskStatus, TaskMutationResult } from "./types.ts";
 
 async function currentTimestamp(): Promise<string> {
   const date = new Date();
@@ -33,7 +29,7 @@ export function printTask(task: Task): void {
 async function updateTask(
   task: Task,
   description?: string,
-  status?: TaskStatus
+  status?: TaskStatus,
 ) {
   if (description) {
     task.description = description;
@@ -63,7 +59,7 @@ export class Database {
     this.tasks = [];
     // @ts-ignore: Deno namespace conflicts with tsserver
     const jsonFileText = Deno.readTextFileSync(this.filename);
-    const data = JSON.parse(jsonFileText)   
+    const data = JSON.parse(jsonFileText);
     if (data && data.tasks) {
       for (const task of data.tasks as Task[]) {
         this.tasks.push(task);
@@ -91,7 +87,7 @@ export class Database {
     return this.counter++;
   }
 
-  async addTask(description: string) {
+  async addTask(description: string): Promise<TaskMutationResult> {
     await this.getSavedTasks();
     const id = await this.getNextID();
     const task = await createTask(id, description);
@@ -100,15 +96,19 @@ export class Database {
     return {
       id,
       status: "SUCCESS" as ActionStatus,
-      task: task,
+      taskInfo: {
+        description: task.description,
+        status: task.status,
+      },
     };
   }
 
-  async getTasks(statusFilter?: string) {
+  async getTasks(statusFilter?: TaskStatus) {
     await this.getSavedTasks();
+    console.log(statusFilter)
     if (statusFilter) {
       return this.tasks.filter(
-        (task) => task.status === statusFilter.toUpperCase(),
+        (task) => task.status === statusFilter
       );
     }
     return this.tasks;
@@ -120,6 +120,7 @@ export class Database {
       return {
         id,
         status: "FAILURE" as ActionStatus,
+        taskInfo: null,
       };
     }
     const task = this.tasks[id];
@@ -128,7 +129,10 @@ export class Database {
     return {
       id,
       status: "SUCCESS" as ActionStatus,
-      task,
+      taskInfo: {
+        description: task.description,
+        status: task.status,
+      },
     };
   }
 
@@ -138,6 +142,7 @@ export class Database {
       return {
         id,
         status: "FAILURE" as ActionStatus,
+        taskInfo: null,
       };
     }
     const task = this.tasks[id];
@@ -146,16 +151,20 @@ export class Database {
     return {
       id,
       status: "SUCCESS" as ActionStatus,
-      task,
+      taskInfo: {
+        description: task.description,
+        status: task.status,
+      },
     };
   }
 
   async deleteTask(id: number) {
     await this.getSavedTasks();
-    if (id >= this.counter) {
+    if (id >= this.counter || id < 0) {
       return {
         id,
         status: "FAILURE" as ActionStatus,
+        taskInfo: null,
       };
     }
     this.tasks = this.tasks.filter((task) => task.id !== id);
@@ -163,6 +172,7 @@ export class Database {
     return {
       id,
       status: "SUCCESS" as ActionStatus,
+      taskInfo: null,
     };
   }
 }

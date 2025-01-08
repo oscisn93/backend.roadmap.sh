@@ -1,4 +1,4 @@
-import type { Command, CommandAction } from "./types.ts";
+import type { CommandAction } from "./types.ts";
 import { Database } from "./database.ts";
 
 export const ADD_MISSIING_ARG =
@@ -14,11 +14,9 @@ export const MARK_DONE_MISSING_ARG =
 
 export class CLI {
   private database: Database;
-  private command: Command;
-  constructor(args: (string | number)[]) {
+  constructor() {
     const filename = "./tasks.json";
     this.database = new Database(filename);
-    this.command = this.createCommand(args);
   }
 
   private createCommand(args: (string | number)[]) {
@@ -26,15 +24,12 @@ export class CLI {
     args.shift();
     return {
       action: action,
-      options: args
+      options: args,
     };
   }
 
-  run() {
-    const {
-      action,
-      options
-    } = this.command;
+  runCommand(args: (string | number)[]) {
+    const { action, options } = this.createCommand(args);
     switch (action) {
       case "add":
         if (options.length < 1) {
@@ -66,10 +61,7 @@ export class CLI {
         if (options.length < 1) {
           console.error(MARK_DONE_MISSING_ARG);
         }
-        return this.database.updateTaskStatus(
-          options[0] as number,
-          "done"
-        );
+        return this.database.updateTaskStatus(options[0] as number, "done");
       case "list":
         if (options.length < 1) {
           return this.database.getTasks();
@@ -78,4 +70,3 @@ export class CLI {
     }
   }
 }
-

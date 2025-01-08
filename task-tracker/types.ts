@@ -13,7 +13,7 @@ export type ActionStatus = "SUCCESS" | "FAILURE";
 export type TaskMutationResult = {
   id: number;
   status: ActionStatus;
-  task?: Task;
+  taskInfo: Pick<Task, "description" | "status"> | null;
 };
 
 export type CommandAction =

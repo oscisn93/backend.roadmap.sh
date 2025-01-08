@@ -1,16 +1,16 @@
-# Task Tracker #
+# Task Tracker
 
 **Descriptions**: A simple CLI to keep track of our daily tasks created using TypeScript on Deno.
 **Project URL**: https://roadmap.sh/projects/task-tracker
 
-### Requirements ###
+### Requirements
 
 - Users can add, update, and delete tasks
 - Updates include marking tasks as in progress or done
 - Users should be able to list all tasks
 - Users should be able to filter tasks by the done or in progress status
 
-### Constraints ###
+### Constraints
 
 - Must use positional arguments for user inputs
 - Store tasks in a JSON file in the same directory as the source file
@@ -19,7 +19,7 @@
 - Must not use external libraries (only the standard library)
 - Must ensure there are no unhandled errors: should fail gracefully
 
-### API ###
+### API
 
 The following demonstrates the available commands and their usage
 
@@ -45,17 +45,16 @@ task-cli list todo
 task-cli list in-progress
 ```
 
-### Data Model ###
+### Data Model
 
 ```typescript
 interface Task {
-    id: number,
-    description: string,
-    status: 'TODO' | 'IN_PROGRESS' | 'DONE',
-    createdAt: string | Date,
-    updatedAt: string | Date
+  id: number;
+  description: string;
+  status: "TODO" | "IN_PROGRESS" | "DONE";
+  createdAt: string | Date;
+  updatedAt: string | Date;
 }
 ```
 
 In order to complete this project, I utilized the following guide: [Building Cross-Plarform CLIs with Deno in 5 Minutes](https://deno.com/blog/build-cross-platform-cli)
-

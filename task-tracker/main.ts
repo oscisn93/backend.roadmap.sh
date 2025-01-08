@@ -2,9 +2,10 @@
 import { parse } from "@std/flags";
 import { CLI } from "./cli.ts";
 
-
 // @ts-ignore: Deno namespace
-const parsedArgs = parse(Deno.args);
-const cli = new CLI(parsedArgs._);
-const results = await cli.run();
-console.log(results);
+const args = parse(Deno.args)._;
+const cli = new CLI();
+const cmd = args.join(" ");
+const results = await cli.runCommand(args);
+console.log("Results for command", "\"" + cmd + "\"", "is", results)
+
