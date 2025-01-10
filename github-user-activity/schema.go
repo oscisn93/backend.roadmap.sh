@@ -7,15 +7,15 @@ import (
 	"time"
 )
 
-type UserPublicEvents []Event
+type PublicUserEvents []Event
 
-func UnmarshalUserActivityEvents(data []byte) (UserPublicEvents, error) {
-	var r UserPublicEvents
+func UnmarshalPublicUserEvents(data []byte) (PublicUserEvents, error) {
+	var r PublicUserEvents
 	err := json.Unmarshal(data, &r)
 	return r, err
 }
 
-func (r *UserActivityEvents) Marshal() ([]byte, error) {
+func (r *PublicUserEvents) Marshal() ([]byte, error) {
 	return json.Marshal(r)
 }
 
