@@ -1,0 +1,1073 @@
+[
+  {
+    "id": "45424050576",
+    "type": "PushEvent",
+    "actor": {
+      "id": 41174627,
+      "login": "oscisn93",
+      "display_login": "oscisn93",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/oscisn93",
+      "avatar_url": "https://avatars.githubusercontent.com/u/41174627?"
+    },
+    "repo": {
+      "id": 910307343,
+      "name": "oscisn93/backend.roadmap.sh",
+      "url": "https://api.github.com/repos/oscisn93/backend.roadmap.sh"
+    },
+    "payload": {
+      "repository_id": 910307343,
+      "push_id": 22055372589,
+      "size": 1,
+      "distinct_size": 1,
+      "ref": "refs/heads/main",
+      "head": "e9267d63fb0005cdf26a49e73ab4c6c8bca261fd",
+      "before": "db84b7003f7daff94c6ea7fe7206df11d59087a8",
+      "commits": [
+        {
+          "sha": "e9267d63fb0005cdf26a49e73ab4c6c8bca261fd",
+          "author": {
+            "email": "41174627+oscisn93@users.noreply.github.com",
+            "name": "oscisn93"
+          },
+          "message": "updated main",
+          "distinct": true,
+          "url": "https://api.github.com/repos/oscisn93/backend.roadmap.sh/commits/e9267d63fb0005cdf26a49e73ab4c6c8bca261fd"
+        }
+      ]
+    },
+    "public": true,
+    "created_at": "2025-01-10T00:33:06Z"
+  },
+  {
+    "id": "45420235649",
+    "type": "PushEvent",
+    "actor": {
+      "id": 41174627,
+      "login": "oscisn93",
+      "display_login": "oscisn93",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/oscisn93",
+      "avatar_url": "https://avatars.githubusercontent.com/u/41174627?"
+    },
+    "repo": {
+      "id": 910307343,
+      "name": "oscisn93/backend.roadmap.sh",
+      "url": "https://api.github.com/repos/oscisn93/backend.roadmap.sh"
+    },
+    "payload": {
+      "repository_id": 910307343,
+      "push_id": 22053413932,
+      "size": 1,
+      "distinct_size": 1,
+      "ref": "refs/heads/main",
+      "head": "db84b7003f7daff94c6ea7fe7206df11d59087a8",
+      "before": "61b4bd837fc8eeed52ae878ed734d2526a3fa930",
+      "commits": [
+        {
+          "sha": "db84b7003f7daff94c6ea7fe7206df11d59087a8",
+          "author": {
+            "email": "41174627+oscisn93@users.noreply.github.com",
+            "name": "oscisn93"
+          },
+          "message": "types and utility functions for gh api cli",
+          "distinct": true,
+          "url": "https://api.github.com/repos/oscisn93/backend.roadmap.sh/commits/db84b7003f7daff94c6ea7fe7206df11d59087a8"
+        }
+      ]
+    },
+    "public": true,
+    "created_at": "2025-01-09T21:14:18Z"
+  },
+  {
+    "id": "45420214800",
+    "type": "PushEvent",
+    "actor": {
+      "id": 41174627,
+      "login": "oscisn93",
+      "display_login": "oscisn93",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/oscisn93",
+      "avatar_url": "https://avatars.githubusercontent.com/u/41174627?"
+    },
+    "repo": {
+      "id": 913972218,
+      "name": "oscisn93/frontend.roadmap.sh",
+      "url": "https://api.github.com/repos/oscisn93/frontend.roadmap.sh"
+    },
+    "payload": {
+      "repository_id": 913972218,
+      "push_id": 22053403243,
+      "size": 1,
+      "distinct_size": 1,
+      "ref": "refs/heads/main",
+      "head": "eee2ec56c8c8b2f34a3512ad62a72930e0449657",
+      "before": "1455c82a2011f158082a8f18d7d06e6e2729dec0",
+      "commits": [
+        {
+          "sha": "eee2ec56c8c8b2f34a3512ad62a72930e0449657",
+          "author": {
+            "email": "41174627+oscisn93@users.noreply.github.com",
+            "name": "oscisn93"
+          },
+          "message": "scaffolding for angular app",
+          "distinct": true,
+          "url": "https://api.github.com/repos/oscisn93/frontend.roadmap.sh/commits/eee2ec56c8c8b2f34a3512ad62a72930e0449657"
+        }
+      ]
+    },
+    "public": true,
+    "created_at": "2025-01-09T21:13:27Z"
+  },
+  {
+    "id": "45382653092",
+    "type": "WatchEvent",
+    "actor": {
+      "id": 41174627,
+      "login": "oscisn93",
+      "display_login": "oscisn93",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/oscisn93",
+      "avatar_url": "https://avatars.githubusercontent.com/u/41174627?"
+    },
+    "repo": {
+      "id": 97062850,
+      "name": "glideapps/quicktype",
+      "url": "https://api.github.com/repos/glideapps/quicktype"
+    },
+    "payload": { "action": "started" },
+    "public": true,
+    "created_at": "2025-01-08T21:14:18Z",
+    "org": {
+      "id": 30638520,
+      "login": "glideapps",
+      "gravatar_id": "",
+      "url": "https://api.github.com/orgs/glideapps",
+      "avatar_url": "https://avatars.githubusercontent.com/u/30638520?"
+    }
+  },
+  {
+    "id": "45377026970",
+    "type": "CreateEvent",
+    "actor": {
+      "id": 41174627,
+      "login": "oscisn93",
+      "display_login": "oscisn93",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/oscisn93",
+      "avatar_url": "https://avatars.githubusercontent.com/u/41174627?"
+    },
+    "repo": {
+      "id": 913972218,
+      "name": "oscisn93/frontend.roadmap.sh",
+      "url": "https://api.github.com/repos/oscisn93/frontend.roadmap.sh"
+    },
+    "payload": {
+      "ref": null,
+      "ref_type": "repository",
+      "master_branch": "main",
+      "description": "A collection of projects from the Frontend Developer roadmap from roadmap.sh",
+      "pusher_type": "user"
+    },
+    "public": true,
+    "created_at": "2025-01-08T17:46:29Z"
+  },
+  {
+    "id": "45377026874",
+    "type": "CreateEvent",
+    "actor": {
+      "id": 41174627,
+      "login": "oscisn93",
+      "display_login": "oscisn93",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/oscisn93",
+      "avatar_url": "https://avatars.githubusercontent.com/u/41174627?"
+    },
+    "repo": {
+      "id": 913972218,
+      "name": "oscisn93/frontend.roadmap.sh",
+      "url": "https://api.github.com/repos/oscisn93/frontend.roadmap.sh"
+    },
+    "payload": {
+      "ref": "main",
+      "ref_type": "branch",
+      "master_branch": "main",
+      "description": "A collection of projects from the Frontend Developer roadmap from roadmap.sh",
+      "pusher_type": "user"
+    },
+    "public": true,
+    "created_at": "2025-01-08T17:46:29Z"
+  },
+  {
+    "id": "45362597111",
+    "type": "PushEvent",
+    "actor": {
+      "id": 41174627,
+      "login": "oscisn93",
+      "display_login": "oscisn93",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/oscisn93",
+      "avatar_url": "https://avatars.githubusercontent.com/u/41174627?"
+    },
+    "repo": {
+      "id": 910307343,
+      "name": "oscisn93/backend.roadmap.sh",
+      "url": "https://api.github.com/repos/oscisn93/backend.roadmap.sh"
+    },
+    "payload": {
+      "repository_id": 910307343,
+      "push_id": 22024773556,
+      "size": 1,
+      "distinct_size": 1,
+      "ref": "refs/heads/main",
+      "head": "61b4bd837fc8eeed52ae878ed734d2526a3fa930",
+      "before": "0a8fb3c66342b29d9439a5f1312ffcd23aa1cc75",
+      "commits": [
+        {
+          "sha": "61b4bd837fc8eeed52ae878ed734d2526a3fa930",
+          "author": {
+            "email": "41174627+oscisn93@users.noreply.github.com",
+            "name": "oscisn93"
+          },
+          "message": "Updated project readme for GH user activity",
+          "distinct": true,
+          "url": "https://api.github.com/repos/oscisn93/backend.roadmap.sh/commits/61b4bd837fc8eeed52ae878ed734d2526a3fa930"
+        }
+      ]
+    },
+    "public": true,
+    "created_at": "2025-01-08T10:51:02Z"
+  },
+  {
+    "id": "45358407773",
+    "type": "PushEvent",
+    "actor": {
+      "id": 41174627,
+      "login": "oscisn93",
+      "display_login": "oscisn93",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/oscisn93",
+      "avatar_url": "https://avatars.githubusercontent.com/u/41174627?"
+    },
+    "repo": {
+      "id": 910307343,
+      "name": "oscisn93/backend.roadmap.sh",
+      "url": "https://api.github.com/repos/oscisn93/backend.roadmap.sh"
+    },
+    "payload": {
+      "repository_id": 910307343,
+      "push_id": 22022776824,
+      "size": 1,
+      "distinct_size": 1,
+      "ref": "refs/heads/main",
+      "head": "0a8fb3c66342b29d9439a5f1312ffcd23aa1cc75",
+      "before": "5835fad18b898a6fe3684368032d6b995e983651",
+      "commits": [
+        {
+          "sha": "0a8fb3c66342b29d9439a5f1312ffcd23aa1cc75",
+          "author": {
+            "email": "41174627+oscisn93@users.noreply.github.com",
+            "name": "oscisn93"
+          },
+          "message": "Added test timestamp provider to facilitate testing",
+          "distinct": true,
+          "url": "https://api.github.com/repos/oscisn93/backend.roadmap.sh/commits/0a8fb3c66342b29d9439a5f1312ffcd23aa1cc75"
+        }
+      ]
+    },
+    "public": true,
+    "created_at": "2025-01-08T08:52:39Z"
+  },
+  {
+    "id": "45353772454",
+    "type": "PushEvent",
+    "actor": {
+      "id": 41174627,
+      "login": "oscisn93",
+      "display_login": "oscisn93",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/oscisn93",
+      "avatar_url": "https://avatars.githubusercontent.com/u/41174627?"
+    },
+    "repo": {
+      "id": 626026800,
+      "name": "oscisn93/dev-blog",
+      "url": "https://api.github.com/repos/oscisn93/dev-blog"
+    },
+    "payload": {
+      "repository_id": 626026800,
+      "push_id": 22020412138,
+      "size": 1,
+      "distinct_size": 1,
+      "ref": "refs/heads/main",
+      "head": "20a75a306f260ee91687aca1d389d99df3ce278e",
+      "before": "69fa345169fc974e6c084050d977eb4ee357c6ac",
+      "commits": [
+        {
+          "sha": "20a75a306f260ee91687aca1d389d99df3ce278e",
+          "author": {
+            "email": "41174627+oscisn93@users.noreply.github.com",
+            "name": "oscisn93"
+          },
+          "message": "UI theme updates",
+          "distinct": true,
+          "url": "https://api.github.com/repos/oscisn93/dev-blog/commits/20a75a306f260ee91687aca1d389d99df3ce278e"
+        }
+      ]
+    },
+    "public": true,
+    "created_at": "2025-01-08T05:56:06Z"
+  },
+  {
+    "id": "45349504392",
+    "type": "PushEvent",
+    "actor": {
+      "id": 41174627,
+      "login": "oscisn93",
+      "display_login": "oscisn93",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/oscisn93",
+      "avatar_url": "https://avatars.githubusercontent.com/u/41174627?"
+    },
+    "repo": {
+      "id": 910307343,
+      "name": "oscisn93/backend.roadmap.sh",
+      "url": "https://api.github.com/repos/oscisn93/backend.roadmap.sh"
+    },
+    "payload": {
+      "repository_id": 910307343,
+      "push_id": 22018013488,
+      "size": 1,
+      "distinct_size": 1,
+      "ref": "refs/heads/main",
+      "head": "5835fad18b898a6fe3684368032d6b995e983651",
+      "before": "eb0e7c3dcbab1538afeea72e65bab2ad1798fbc0",
+      "commits": [
+        {
+          "sha": "5835fad18b898a6fe3684368032d6b995e983651",
+          "author": {
+            "email": "41174627+oscisn93@users.noreply.github.com",
+            "name": "oscisn93"
+          },
+          "message": "finished cli_test",
+          "distinct": true,
+          "url": "https://api.github.com/repos/oscisn93/backend.roadmap.sh/commits/5835fad18b898a6fe3684368032d6b995e983651"
+        }
+      ]
+    },
+    "public": true,
+    "created_at": "2025-01-08T01:51:04Z"
+  },
+  {
+    "id": "45320530471",
+    "type": "PushEvent",
+    "actor": {
+      "id": 41174627,
+      "login": "oscisn93",
+      "display_login": "oscisn93",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/oscisn93",
+      "avatar_url": "https://avatars.githubusercontent.com/u/41174627?"
+    },
+    "repo": {
+      "id": 910307343,
+      "name": "oscisn93/backend.roadmap.sh",
+      "url": "https://api.github.com/repos/oscisn93/backend.roadmap.sh"
+    },
+    "payload": {
+      "repository_id": 910307343,
+      "push_id": 22003356170,
+      "size": 1,
+      "distinct_size": 1,
+      "ref": "refs/heads/main",
+      "head": "eb0e7c3dcbab1538afeea72e65bab2ad1798fbc0",
+      "before": "7c8453134fce3a00862717b30dc480bc7ffbbbdd",
+      "commits": [
+        {
+          "sha": "eb0e7c3dcbab1538afeea72e65bab2ad1798fbc0",
+          "author": {
+            "email": "41174627+oscisn93@users.noreply.github.com",
+            "name": "oscisn93"
+          },
+          "message": "Needs project URL from roadmap.sh",
+          "distinct": true,
+          "url": "https://api.github.com/repos/oscisn93/backend.roadmap.sh/commits/eb0e7c3dcbab1538afeea72e65bab2ad1798fbc0"
+        }
+      ]
+    },
+    "public": true,
+    "created_at": "2025-01-07T08:54:31Z"
+  },
+  {
+    "id": "45320490648",
+    "type": "PushEvent",
+    "actor": {
+      "id": 41174627,
+      "login": "oscisn93",
+      "display_login": "oscisn93",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/oscisn93",
+      "avatar_url": "https://avatars.githubusercontent.com/u/41174627?"
+    },
+    "repo": {
+      "id": 910307343,
+      "name": "oscisn93/backend.roadmap.sh",
+      "url": "https://api.github.com/repos/oscisn93/backend.roadmap.sh"
+    },
+    "payload": {
+      "repository_id": 910307343,
+      "push_id": 22003337552,
+      "size": 1,
+      "distinct_size": 1,
+      "ref": "refs/heads/main",
+      "head": "7c8453134fce3a00862717b30dc480bc7ffbbbdd",
+      "before": "3643e48a32c86ecb36c59ed76e3866bb3af64fb5",
+      "commits": [
+        {
+          "sha": "7c8453134fce3a00862717b30dc480bc7ffbbbdd",
+          "author": {
+            "email": "41174627+oscisn93@users.noreply.github.com",
+            "name": "oscisn93"
+          },
+          "message": "Needs project URL from roadmap.sh",
+          "distinct": true,
+          "url": "https://api.github.com/repos/oscisn93/backend.roadmap.sh/commits/7c8453134fce3a00862717b30dc480bc7ffbbbdd"
+        }
+      ]
+    },
+    "public": true,
+    "created_at": "2025-01-07T08:53:17Z"
+  },
+  {
+    "id": "45320447750",
+    "type": "PushEvent",
+    "actor": {
+      "id": 41174627,
+      "login": "oscisn93",
+      "display_login": "oscisn93",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/oscisn93",
+      "avatar_url": "https://avatars.githubusercontent.com/u/41174627?"
+    },
+    "repo": {
+      "id": 910307343,
+      "name": "oscisn93/backend.roadmap.sh",
+      "url": "https://api.github.com/repos/oscisn93/backend.roadmap.sh"
+    },
+    "payload": {
+      "repository_id": 910307343,
+      "push_id": 22003316933,
+      "size": 1,
+      "distinct_size": 1,
+      "ref": "refs/heads/main",
+      "head": "3643e48a32c86ecb36c59ed76e3866bb3af64fb5",
+      "before": "7d97e7b532c914604b4ad299cdab25500b1b8498",
+      "commits": [
+        {
+          "sha": "3643e48a32c86ecb36c59ed76e3866bb3af64fb5",
+          "author": {
+            "email": "41174627+oscisn93@users.noreply.github.com",
+            "name": "oscisn93"
+          },
+          "message": "completed rquirements for project:",
+          "distinct": true,
+          "url": "https://api.github.com/repos/oscisn93/backend.roadmap.sh/commits/3643e48a32c86ecb36c59ed76e3866bb3af64fb5"
+        }
+      ]
+    },
+    "public": true,
+    "created_at": "2025-01-07T08:51:56Z"
+  },
+  {
+    "id": "45317797378",
+    "type": "WatchEvent",
+    "actor": {
+      "id": 41174627,
+      "login": "oscisn93",
+      "display_login": "oscisn93",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/oscisn93",
+      "avatar_url": "https://avatars.githubusercontent.com/u/41174627?"
+    },
+    "repo": {
+      "id": 85077558,
+      "name": "kamranahmedse/developer-roadmap",
+      "url": "https://api.github.com/repos/kamranahmedse/developer-roadmap"
+    },
+    "payload": { "action": "started" },
+    "public": true,
+    "created_at": "2025-01-07T07:14:58Z"
+  },
+  {
+    "id": "45317156425",
+    "type": "WatchEvent",
+    "actor": {
+      "id": 41174627,
+      "login": "oscisn93",
+      "display_login": "oscisn93",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/oscisn93",
+      "avatar_url": "https://avatars.githubusercontent.com/u/41174627?"
+    },
+    "repo": {
+      "id": 798970840,
+      "name": "prazzon/Flexbox-Labs",
+      "url": "https://api.github.com/repos/prazzon/Flexbox-Labs"
+    },
+    "payload": { "action": "started" },
+    "public": true,
+    "created_at": "2025-01-07T06:47:20Z"
+  },
+  {
+    "id": "45259807880",
+    "type": "PushEvent",
+    "actor": {
+      "id": 41174627,
+      "login": "oscisn93",
+      "display_login": "oscisn93",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/oscisn93",
+      "avatar_url": "https://avatars.githubusercontent.com/u/41174627?"
+    },
+    "repo": {
+      "id": 910307343,
+      "name": "oscisn93/backend.roadmap.sh",
+      "url": "https://api.github.com/repos/oscisn93/backend.roadmap.sh"
+    },
+    "payload": {
+      "repository_id": 910307343,
+      "push_id": 21970226833,
+      "size": 1,
+      "distinct_size": 1,
+      "ref": "refs/heads/main",
+      "head": "7d97e7b532c914604b4ad299cdab25500b1b8498",
+      "before": "15c436e9c81a93d0e27c22b595b22e1353739f80",
+      "commits": [
+        {
+          "sha": "7d97e7b532c914604b4ad299cdab25500b1b8498",
+          "author": {
+            "email": "41174627+oscisn93@users.noreply.github.com",
+            "name": "oscisn93"
+          },
+          "message": "Initialized tests, need to use sync fs apis",
+          "distinct": true,
+          "url": "https://api.github.com/repos/oscisn93/backend.roadmap.sh/commits/7d97e7b532c914604b4ad299cdab25500b1b8498"
+        }
+      ]
+    },
+    "public": true,
+    "created_at": "2025-01-04T16:26:15Z"
+  },
+  {
+    "id": "45258527635",
+    "type": "PushEvent",
+    "actor": {
+      "id": 41174627,
+      "login": "oscisn93",
+      "display_login": "oscisn93",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/oscisn93",
+      "avatar_url": "https://avatars.githubusercontent.com/u/41174627?"
+    },
+    "repo": {
+      "id": 910307343,
+      "name": "oscisn93/backend.roadmap.sh",
+      "url": "https://api.github.com/repos/oscisn93/backend.roadmap.sh"
+    },
+    "payload": {
+      "repository_id": 910307343,
+      "push_id": 21969466638,
+      "size": 1,
+      "distinct_size": 1,
+      "ref": "refs/heads/main",
+      "head": "15c436e9c81a93d0e27c22b595b22e1353739f80",
+      "before": "92116e2d3f8aeaa0fd1dc433d2fb62c55b3bd173",
+      "commits": [
+        {
+          "sha": "15c436e9c81a93d0e27c22b595b22e1353739f80",
+          "author": {
+            "email": "41174627+oscisn93@users.noreply.github.com",
+            "name": "oscisn93"
+          },
+          "message": "ready for testing",
+          "distinct": true,
+          "url": "https://api.github.com/repos/oscisn93/backend.roadmap.sh/commits/15c436e9c81a93d0e27c22b595b22e1353739f80"
+        }
+      ]
+    },
+    "public": true,
+    "created_at": "2025-01-04T14:26:52Z"
+  },
+  {
+    "id": "45223313127",
+    "type": "PushEvent",
+    "actor": {
+      "id": 41174627,
+      "login": "oscisn93",
+      "display_login": "oscisn93",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/oscisn93",
+      "avatar_url": "https://avatars.githubusercontent.com/u/41174627?"
+    },
+    "repo": {
+      "id": 910307343,
+      "name": "oscisn93/backend.roadmap.sh",
+      "url": "https://api.github.com/repos/oscisn93/backend.roadmap.sh"
+    },
+    "payload": {
+      "repository_id": 910307343,
+      "push_id": 21950138748,
+      "size": 1,
+      "distinct_size": 1,
+      "ref": "refs/heads/main",
+      "head": "92116e2d3f8aeaa0fd1dc433d2fb62c55b3bd173",
+      "before": "36ea1369eb8dfadd43618900e6fe7655d89b4fd7",
+      "commits": [
+        {
+          "sha": "92116e2d3f8aeaa0fd1dc433d2fb62c55b3bd173",
+          "author": {
+            "email": "41174627+oscisn93@users.noreply.github.com",
+            "name": "oscisn93"
+          },
+          "message": "Updated database and cli modules",
+          "distinct": true,
+          "url": "https://api.github.com/repos/oscisn93/backend.roadmap.sh/commits/92116e2d3f8aeaa0fd1dc433d2fb62c55b3bd173"
+        }
+      ]
+    },
+    "public": true,
+    "created_at": "2025-01-02T23:21:06Z"
+  },
+  {
+    "id": "45218083319",
+    "type": "PushEvent",
+    "actor": {
+      "id": 41174627,
+      "login": "oscisn93",
+      "display_login": "oscisn93",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/oscisn93",
+      "avatar_url": "https://avatars.githubusercontent.com/u/41174627?"
+    },
+    "repo": {
+      "id": 910307343,
+      "name": "oscisn93/backend.roadmap.sh",
+      "url": "https://api.github.com/repos/oscisn93/backend.roadmap.sh"
+    },
+    "payload": {
+      "repository_id": 910307343,
+      "push_id": 21947402815,
+      "size": 1,
+      "distinct_size": 1,
+      "ref": "refs/heads/main",
+      "head": "36ea1369eb8dfadd43618900e6fe7655d89b4fd7",
+      "before": "239662084956675da8151bb4f8dbd5482f92790c",
+      "commits": [
+        {
+          "sha": "36ea1369eb8dfadd43618900e6fe7655d89b4fd7",
+          "author": {
+            "email": "41174627+oscisn93@users.noreply.github.com",
+            "name": "oscisn93"
+          },
+          "message": "further updates to lib files",
+          "distinct": true,
+          "url": "https://api.github.com/repos/oscisn93/backend.roadmap.sh/commits/36ea1369eb8dfadd43618900e6fe7655d89b4fd7"
+        }
+      ]
+    },
+    "public": true,
+    "created_at": "2025-01-02T18:34:17Z"
+  },
+  {
+    "id": "45198037082",
+    "type": "PushEvent",
+    "actor": {
+      "id": 41174627,
+      "login": "oscisn93",
+      "display_login": "oscisn93",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/oscisn93",
+      "avatar_url": "https://avatars.githubusercontent.com/u/41174627?"
+    },
+    "repo": {
+      "id": 910307343,
+      "name": "oscisn93/backend.roadmap.sh",
+      "url": "https://api.github.com/repos/oscisn93/backend.roadmap.sh"
+    },
+    "payload": {
+      "repository_id": 910307343,
+      "push_id": 21936518485,
+      "size": 1,
+      "distinct_size": 1,
+      "ref": "refs/heads/main",
+      "head": "239662084956675da8151bb4f8dbd5482f92790c",
+      "before": "75e6fd02b044f3b4ee628a948c67e42be4827195",
+      "commits": [
+        {
+          "sha": "239662084956675da8151bb4f8dbd5482f92790c",
+          "author": {
+            "email": "41174627+oscisn93@users.noreply.github.com",
+            "name": "oscisn93"
+          },
+          "message": "Updated TaskDB and CLI classes",
+          "distinct": true,
+          "url": "https://api.github.com/repos/oscisn93/backend.roadmap.sh/commits/239662084956675da8151bb4f8dbd5482f92790c"
+        }
+      ]
+    },
+    "public": true,
+    "created_at": "2025-01-02T00:52:11Z"
+  },
+  {
+    "id": "45170391810",
+    "type": "PushEvent",
+    "actor": {
+      "id": 41174627,
+      "login": "oscisn93",
+      "display_login": "oscisn93",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/oscisn93",
+      "avatar_url": "https://avatars.githubusercontent.com/u/41174627?"
+    },
+    "repo": {
+      "id": 910307343,
+      "name": "oscisn93/backend.roadmap.sh",
+      "url": "https://api.github.com/repos/oscisn93/backend.roadmap.sh"
+    },
+    "payload": {
+      "repository_id": 910307343,
+      "push_id": 21919507310,
+      "size": 1,
+      "distinct_size": 1,
+      "ref": "refs/heads/main",
+      "head": "75e6fd02b044f3b4ee628a948c67e42be4827195",
+      "before": "922984bdbd47a40c2087c1843b47e988560b69d2",
+      "commits": [
+        {
+          "sha": "75e6fd02b044f3b4ee628a948c67e42be4827195",
+          "author": {
+            "email": "41174627+oscisn93@users.noreply.github.com",
+            "name": "oscisn93"
+          },
+          "message": "created scaffolding for task-tracker",
+          "distinct": true,
+          "url": "https://api.github.com/repos/oscisn93/backend.roadmap.sh/commits/75e6fd02b044f3b4ee628a948c67e42be4827195"
+        }
+      ]
+    },
+    "public": true,
+    "created_at": "2024-12-31T03:46:39Z"
+  },
+  {
+    "id": "45169021576",
+    "type": "PushEvent",
+    "actor": {
+      "id": 41174627,
+      "login": "oscisn93",
+      "display_login": "oscisn93",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/oscisn93",
+      "avatar_url": "https://avatars.githubusercontent.com/u/41174627?"
+    },
+    "repo": {
+      "id": 910307343,
+      "name": "oscisn93/backend.roadmap.sh",
+      "url": "https://api.github.com/repos/oscisn93/backend.roadmap.sh"
+    },
+    "payload": {
+      "repository_id": 910307343,
+      "push_id": 21918656556,
+      "size": 1,
+      "distinct_size": 1,
+      "ref": "refs/heads/main",
+      "head": "922984bdbd47a40c2087c1843b47e988560b69d2",
+      "before": "b3ea01f8cd61c0ae6ea4602ee5820b0b8218bd4d",
+      "commits": [
+        {
+          "sha": "922984bdbd47a40c2087c1843b47e988560b69d2",
+          "author": {
+            "email": "41174627+oscisn93@users.noreply.github.com",
+            "name": "oscisn93"
+          },
+          "message": "Added to README",
+          "distinct": true,
+          "url": "https://api.github.com/repos/oscisn93/backend.roadmap.sh/commits/922984bdbd47a40c2087c1843b47e988560b69d2"
+        }
+      ]
+    },
+    "public": true,
+    "created_at": "2024-12-31T01:27:03Z"
+  },
+  {
+    "id": "45168196683",
+    "type": "CreateEvent",
+    "actor": {
+      "id": 41174627,
+      "login": "oscisn93",
+      "display_login": "oscisn93",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/oscisn93",
+      "avatar_url": "https://avatars.githubusercontent.com/u/41174627?"
+    },
+    "repo": {
+      "id": 910307343,
+      "name": "oscisn93/backend.roadmap.sh",
+      "url": "https://api.github.com/repos/oscisn93/backend.roadmap.sh"
+    },
+    "payload": {
+      "ref": "main",
+      "ref_type": "branch",
+      "master_branch": "main",
+      "description": "Working through the projects for the Backend ",
+      "pusher_type": "user"
+    },
+    "public": true,
+    "created_at": "2024-12-31T00:03:39Z"
+  },
+  {
+    "id": "45168196666",
+    "type": "CreateEvent",
+    "actor": {
+      "id": 41174627,
+      "login": "oscisn93",
+      "display_login": "oscisn93",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/oscisn93",
+      "avatar_url": "https://avatars.githubusercontent.com/u/41174627?"
+    },
+    "repo": {
+      "id": 910307343,
+      "name": "oscisn93/backend.roadmap.sh",
+      "url": "https://api.github.com/repos/oscisn93/backend.roadmap.sh"
+    },
+    "payload": {
+      "ref": null,
+      "ref_type": "repository",
+      "master_branch": "main",
+      "description": "Working through the projects for the Backend ",
+      "pusher_type": "user"
+    },
+    "public": true,
+    "created_at": "2024-12-31T00:03:39Z"
+  },
+  {
+    "id": "45168149308",
+    "type": "WatchEvent",
+    "actor": {
+      "id": 41174627,
+      "login": "oscisn93",
+      "display_login": "oscisn93",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/oscisn93",
+      "avatar_url": "https://avatars.githubusercontent.com/u/41174627?"
+    },
+    "repo": {
+      "id": 12574344,
+      "name": "spf13/cobra",
+      "url": "https://api.github.com/repos/spf13/cobra"
+    },
+    "payload": { "action": "started" },
+    "public": true,
+    "created_at": "2024-12-30T23:59:16Z"
+  },
+  {
+    "id": "45152659652",
+    "type": "PushEvent",
+    "actor": {
+      "id": 41174627,
+      "login": "oscisn93",
+      "display_login": "oscisn93",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/oscisn93",
+      "avatar_url": "https://avatars.githubusercontent.com/u/41174627?"
+    },
+    "repo": {
+      "id": 626026800,
+      "name": "oscisn93/dev-blog",
+      "url": "https://api.github.com/repos/oscisn93/dev-blog"
+    },
+    "payload": {
+      "repository_id": 626026800,
+      "push_id": 21909552199,
+      "size": 1,
+      "distinct_size": 1,
+      "ref": "refs/heads/main",
+      "head": "69fa345169fc974e6c084050d977eb4ee357c6ac",
+      "before": "1f61b34c22e9fb2ec250a4aaf1dcaab08fa53681",
+      "commits": [
+        {
+          "sha": "69fa345169fc974e6c084050d977eb4ee357c6ac",
+          "author": {
+            "email": "41174627+oscisn93@users.noreply.github.com",
+            "name": "oscisn93"
+          },
+          "message": "Updated astro to latest version",
+          "distinct": true,
+          "url": "https://api.github.com/repos/oscisn93/dev-blog/commits/69fa345169fc974e6c084050d977eb4ee357c6ac"
+        }
+      ]
+    },
+    "public": true,
+    "created_at": "2024-12-30T09:14:33Z"
+  },
+  {
+    "id": "45149906974",
+    "type": "PushEvent",
+    "actor": {
+      "id": 41174627,
+      "login": "oscisn93",
+      "display_login": "oscisn93",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/oscisn93",
+      "avatar_url": "https://avatars.githubusercontent.com/u/41174627?"
+    },
+    "repo": {
+      "id": 626026800,
+      "name": "oscisn93/dev-blog",
+      "url": "https://api.github.com/repos/oscisn93/dev-blog"
+    },
+    "payload": {
+      "repository_id": 626026800,
+      "push_id": 21908039268,
+      "size": 1,
+      "distinct_size": 1,
+      "ref": "refs/heads/main",
+      "head": "1f61b34c22e9fb2ec250a4aaf1dcaab08fa53681",
+      "before": "3e3e3c31fc253af4b51e080cbb047de050dfe795",
+      "commits": [
+        {
+          "sha": "1f61b34c22e9fb2ec250a4aaf1dcaab08fa53681",
+          "author": {
+            "email": "41174627+oscisn93@users.noreply.github.com",
+            "name": "Oscar Cisneros"
+          },
+          "message": "Delete .github directory",
+          "distinct": true,
+          "url": "https://api.github.com/repos/oscisn93/dev-blog/commits/1f61b34c22e9fb2ec250a4aaf1dcaab08fa53681"
+        }
+      ]
+    },
+    "public": true,
+    "created_at": "2024-12-30T06:28:12Z"
+  },
+  {
+    "id": "45149513838",
+    "type": "PushEvent",
+    "actor": {
+      "id": 41174627,
+      "login": "oscisn93",
+      "display_login": "oscisn93",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/oscisn93",
+      "avatar_url": "https://avatars.githubusercontent.com/u/41174627?"
+    },
+    "repo": {
+      "id": 626026800,
+      "name": "oscisn93/dev-blog",
+      "url": "https://api.github.com/repos/oscisn93/dev-blog"
+    },
+    "payload": {
+      "repository_id": 626026800,
+      "push_id": 21907816134,
+      "size": 1,
+      "distinct_size": 1,
+      "ref": "refs/heads/main",
+      "head": "3e3e3c31fc253af4b51e080cbb047de050dfe795",
+      "before": "582d15b74acffa621074424b135e40c9979f4e62",
+      "commits": [
+        {
+          "sha": "3e3e3c31fc253af4b51e080cbb047de050dfe795",
+          "author": {
+            "email": "41174627+oscisn93@users.noreply.github.com",
+            "name": "Oscar Cisneros"
+          },
+          "message": "Create astro.yml",
+          "distinct": true,
+          "url": "https://api.github.com/repos/oscisn93/dev-blog/commits/3e3e3c31fc253af4b51e080cbb047de050dfe795"
+        }
+      ]
+    },
+    "public": true,
+    "created_at": "2024-12-30T06:00:47Z"
+  },
+  {
+    "id": "45049646418",
+    "type": "PushEvent",
+    "actor": {
+      "id": 41174627,
+      "login": "oscisn93",
+      "display_login": "oscisn93",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/oscisn93",
+      "avatar_url": "https://avatars.githubusercontent.com/u/41174627?"
+    },
+    "repo": {
+      "id": 617303743,
+      "name": "oscisn93/rust_http",
+      "url": "https://api.github.com/repos/oscisn93/rust_http"
+    },
+    "payload": {
+      "repository_id": 617303743,
+      "push_id": 21846678317,
+      "size": 1,
+      "distinct_size": 1,
+      "ref": "refs/heads/master",
+      "head": "3c05a2ccc528788a5fe6bddc15c46b437fa8267e",
+      "before": "2d6caaf82215ad953dbb7b475cf0b8accdb95da5",
+      "commits": [
+        {
+          "sha": "3c05a2ccc528788a5fe6bddc15c46b437fa8267e",
+          "author": {
+            "email": "41174627+oscisn93@users.noreply.github.com",
+            "name": "Oscar Cisneros"
+          },
+          "message": "Create README.md",
+          "distinct": true,
+          "url": "https://api.github.com/repos/oscisn93/rust_http/commits/3c05a2ccc528788a5fe6bddc15c46b437fa8267e"
+        }
+      ]
+    },
+    "public": true,
+    "created_at": "2024-12-24T01:32:44Z"
+  },
+  {
+    "id": "44830938486",
+    "type": "PushEvent",
+    "actor": {
+      "id": 41174627,
+      "login": "oscisn93",
+      "display_login": "oscisn93",
+      "gravatar_id": "",
+      "url": "https://api.github.com/users/oscisn93",
+      "avatar_url": "https://avatars.githubusercontent.com/u/41174627?"
+    },
+    "repo": {
+      "id": 796936924,
+      "name": "oscisn93/resumes",
+      "url": "https://api.github.com/repos/oscisn93/resumes"
+    },
+    "payload": {
+      "repository_id": 796936924,
+      "push_id": 21731290634,
+      "size": 1,
+      "distinct_size": 1,
+      "ref": "refs/heads/master",
+      "head": "a735271c5b65bc6b1d982367eba936127e14c54c",
+      "before": "f085760cb57b0cba2eb9c793f9b77c6e0b39a743",
+      "commits": [
+        {
+          "sha": "a735271c5b65bc6b1d982367eba936127e14c54c",
+          "author": {
+            "email": "41174627+oscisn93@users.noreply.github.com",
+            "name": "oscisn93"
+          },
+          "message": "updated resume",
+          "distinct": true,
+          "url": "https://api.github.com/repos/oscisn93/resumes/commits/a735271c5b65bc6b1d982367eba936127e14c54c"
+        }
+      ]
+    },
+    "public": true,
+    "created_at": "2024-12-16T14:50:35Z"
+  }
+]
