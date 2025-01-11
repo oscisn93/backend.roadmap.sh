@@ -6,11 +6,29 @@ import (
 	"io"
 	"log"
 	"net/http"
+	"os"
 )
 
-func fetchUserActivity(username string) {
+type GitHubActivityCLIConfig struct {
+	Username string
+	Token    string
+	Url      string
+}
+
+func CreateCliConfig(username string) GitHubActivityCLIConfig {
+	file := ".env"
+	tokenString := GetPublicToken(file)
 	url := fmt.Sprintf("https://api.github.com/users/%s/events/public", username)
-	request, error := http.NewRequest("GET", url, nil)
+	config := GitHubActivityCLIConfig{
+		Username: username,
+		Token:    tokenString,
+		Url:      url,
+	}
+	return config
+}
+
+func fetchUserActivity(config GitHubActivityCLIConfig) PublicUserEvents {
+	request, error := http.NewRequest("GET", config.Url, nil)
 
 	if error != nil {
 		log.Fatal("Bad Request")
@@ -59,15 +77,33 @@ func fetchUserActivity(username string) {
 		log.Fatal("Unable to unmarhsal public user events. Something went wrong")
 	}
 
+	return events
+
+}
+
+func GetUserEvents(config GitHubActivityCLIConfig) PublicUserEvents {
+	ghCache := GitHubCacheClient("github-cache.json")
+	user, error := ghCache.GetUserEntry(config.Username)
+	if error != nil {
+		fetchUserActivity(config)
+	}
+	etag := user.Etag
+
+}
+
+func main() {
+	if len(os.Args) < 2 {
+		log.Fatal("You must specify a github username after the command.")
+	}
+	usernameArg := os.Args[1]
+	config := CreateCliConfig(usernameArg)
+	var events = GetUserEvents(config)
+
 	data, err := json.MarshalIndent(events, "", "  ")
 
 	if err != nil {
 		log.Fatal(err)
 	}
 
-	fmt.Println("PublicEvents for GitHub user", username, "\n", string(data))
-}
-
-func main() {
-	fetchUserActivity("oscisn93")
+	fmt.Println("PublicEvents for GitHub user", config.Username, "\n", string(data))
 }
