@@ -3,7 +3,7 @@ sql:
   - engine: "sqlite"
     schema: "libsql/schema.sql"
     queries: "libsql/queries.sql"
-    get:
+    gen:
       go:
         package: libsql
         out: ./libsql
