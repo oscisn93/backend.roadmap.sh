@@ -7,6 +7,8 @@ import (
 	"log"
 	"net/http"
 	"os"
+
+	"github.com/oscisn93/backend.roadmap.sh/tree/main/github-user-activity/githubapi"
 )
 
 type GitHubActivityCLIConfig struct {
@@ -17,7 +19,7 @@ type GitHubActivityCLIConfig struct {
 
 func CreateCliConfig(username string) GitHubActivityCLIConfig {
 	file := ".env"
-	tokenString := GetPublicToken(file)
+	tokenString := githubapi.GetPublicToken(file)
 	url := fmt.Sprintf("https://api.github.com/users/%s/events/public", username)
 	config := GitHubActivityCLIConfig{
 		Username: username,
@@ -27,7 +29,7 @@ func CreateCliConfig(username string) GitHubActivityCLIConfig {
 	return config
 }
 
-func fetchUserActivity(config GitHubActivityCLIConfig) PublicUserEvents {
+func fetchUserActivity(config GitHubActivityCLIConfig) githubapi.PublicUserEvents {
 	request, error := http.NewRequest("GET", config.Url, nil)
 
 	if error != nil {
@@ -35,7 +37,7 @@ func fetchUserActivity(config GitHubActivityCLIConfig) PublicUserEvents {
 	}
 
 	var envFile = ".env"
-	token := GetPublicToken(envFile)
+	token := githubapi.GetPublicToken(envFile)
 	tokenString := fmt.Sprintf("Bearer %s", token)
 
 	request.Header.Set("Content-Type", "application/json")
@@ -71,7 +73,7 @@ func fetchUserActivity(config GitHubActivityCLIConfig) PublicUserEvents {
 		log.Fatalf("Something went wrong. %v", error)
 	}
 
-	events, error := UnmarshalPublicUserEvents(body)
+	events, error := githubapi.UnmarshalPublicUserEvents(body)
 
 	if error != nil {
 		log.Fatal("Unable to unmarhsal public user events. Something went wrong")
@@ -81,14 +83,15 @@ func fetchUserActivity(config GitHubActivityCLIConfig) PublicUserEvents {
 
 }
 
-func GetUserEvents(config GitHubActivityCLIConfig) PublicUserEvents {
-	ghCache := GitHubCacheClient("github-cache.json")
+func GetUserEvents(config GitHubActivityCLIConfig) githubapi.PublicUserEvents {
+	ghCache := githubapi.GitHubCacheClient("github-cache.json")
 	user, error := ghCache.GetUserEntry(config.Username)
 	if error != nil {
 		fetchUserActivity(config)
 	}
 	etag := user.Etag
-
+	fmt.Println(etag)
+	return githubapi.PublicUserEvents{}
 }
 
 func main() {

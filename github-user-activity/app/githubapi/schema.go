@@ -1,4 +1,4 @@
-package main
+package githubapi
 
 import (
 	"bytes"
