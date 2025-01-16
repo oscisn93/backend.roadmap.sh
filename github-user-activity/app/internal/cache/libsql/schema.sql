@@ -1,3 +1,10 @@
+type UserRequest struct {
+	Username  string `json:"username"`
+	Timestamp int64  `json:"timestamp"`
+	Etag      string `json:"etag"`
+	RateLimit int    `json:"rateLimit"`
+}
+
 --- Table to store GitHub actors (users)
 CREATE TABLE IF NOT EXISTS actor (
   id INTEGER PRIMARY KEY,
@@ -6,6 +13,16 @@ CREATE TABLE IF NOT EXISTS actor (
   gravatar_id TEXT,
   url TEXT,
   avatar_url TEXT
+);
+
+-- Table to store client request metadata for our cli app
+CREATE TABLE IF NOT EXISTS user_request (
+  id INTEGER PRIMARY KEY AUTOINCREMENT,
+  username TEXT NOT NULL UNIQUE,
+  actor_id INTEGER NOT NULL REFERENCES actor(id),
+  timestamp TIMESTAMP NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  etag TEXT,
+  rate_limit INTEGER NOT NULL
 );
 
 -- Table to store GitHub repositories

@@ -44,6 +44,33 @@ DELETE FROM actor
 WHERE
   id = ?;
 
+-- name: GetUserRequest :one
+SELECT
+  *
+FROM
+  user_request
+WHERE
+  username = ?
+LIMIT 1;
+
+-- name: CreateUserRequest :one
+INSERT INTO
+  user_request (
+    usename,
+    actor_id,
+    etag,
+    rate_limit
+  ) VALUES (
+    ?, ?, ?, ?
+  ) RETURNING *;
+
+-- name: UpdateUserRequest :one
+UPDATE user_request
+  SET etag = ?,
+      rate_limit = ?
+  WHERE id = ?
+RETURNING *;
+
 -- name: GetRepo :one
 SELECT
   *
@@ -794,6 +821,8 @@ SELECT
   *
 FROM
   event
+WHERE 
+  actor_id = ?
 ORDER BY
   created_at DESC;
 

@@ -11,25 +11,7 @@ import (
 	"github.com/oscisn93/backend.roadmap.sh/tree/main/github-user-activity/githubapi"
 )
 
-type GitHubActivityCLIConfig struct {
-	Username string
-	Token    string
-	Url      string
-}
-
-func CreateCliConfig(username string) GitHubActivityCLIConfig {
-	file := ".env"
-	tokenString := githubapi.GetPublicToken(file)
-	url := fmt.Sprintf("https://api.github.com/users/%s/events/public", username)
-	config := GitHubActivityCLIConfig{
-		Username: username,
-		Token:    tokenString,
-		Url:      url,
-	}
-	return config
-}
-
-func fetchUserActivity(config GitHubActivityCLIConfig) githubapi.PublicUserEvents {
+func fetchUserActivity(config AppConfig) githubapi.PublicUserEvents {
 	request, error := http.NewRequest("GET", config.Url, nil)
 
 	if error != nil {
