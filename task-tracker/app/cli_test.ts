@@ -1,6 +1,6 @@
 // @ts-ignore: Deno std lib provides type definitions
-import { assertEquals } from "@std/testing/asserts";
-import { Task, ActionStatus, TaskMutationResult } from "./types.ts";
+import { assertEquals } from "jsr:@std/assert";
+import { ActionStatus, Task, TaskMutationResult } from "./types.ts";
 import { CLI } from "./cli.ts";
 
 type TestInstance = {
@@ -24,7 +24,7 @@ const testConfig: TestConfig = {
             id: 0,
             description: "some task",
             status: "todo",
-            createdAt: 'in_due_time'
+            createdAt: "in_due_time",
           },
         },
       },
@@ -39,8 +39,8 @@ const testConfig: TestConfig = {
             id: 0,
             description: "new description for some task",
             status: "todo",
-            createdAt: 'in_due_time',
-            updatedAt: 'in_due_time'
+            createdAt: "in_due_time",
+            updatedAt: "in_due_time",
           },
         },
       },
@@ -55,8 +55,8 @@ const testConfig: TestConfig = {
             id: 0,
             description: "new description for some task",
             status: "in-progress",
-            createdAt: 'in_due_time',
-            updatedAt: 'in_due_time'
+            createdAt: "in_due_time",
+            updatedAt: "in_due_time",
           },
         },
       },
@@ -72,7 +72,7 @@ const testConfig: TestConfig = {
             description: "new description for some task",
             status: "done",
             createdAt: "in_due_time",
-            updatedAt: 'in_due_time'
+            updatedAt: "in_due_time",
           },
         },
       },
@@ -97,7 +97,7 @@ const testConfig: TestConfig = {
             id: 0,
             description: "taskOne",
             status: "todo",
-            createdAt: "in_due_time"
+            createdAt: "in_due_time",
           },
         },
       },
@@ -110,7 +110,7 @@ const testConfig: TestConfig = {
             id: 1,
             description: "taskTwo",
             status: "todo",
-            createdAt: "in_due_time"
+            createdAt: "in_due_time",
           },
         },
       },
@@ -123,7 +123,7 @@ const testConfig: TestConfig = {
             id: 2,
             description: "taskThree",
             status: "todo",
-            createdAt: "in_due_time"
+            createdAt: "in_due_time",
           },
         },
       },
@@ -136,7 +136,7 @@ const testConfig: TestConfig = {
             id: 3,
             description: "taskFour",
             status: "todo",
-            createdAt: "in_due_time"
+            createdAt: "in_due_time",
           },
         },
       },
@@ -149,7 +149,7 @@ const testConfig: TestConfig = {
             id: 4,
             description: "taskFive",
             status: "todo",
-            createdAt: "in_due_time"
+            createdAt: "in_due_time",
           },
         },
       },
@@ -165,7 +165,7 @@ const testConfig: TestConfig = {
             description: "taskOne",
             status: "done",
             createdAt: "in_due_time",
-            updatedAt: "in_due_time"
+            updatedAt: "in_due_time",
           },
         },
       },
@@ -179,7 +179,7 @@ const testConfig: TestConfig = {
             description: "taskTwo",
             status: "done",
             createdAt: "in_due_time",
-            updatedAt: "in_due_time"
+            updatedAt: "in_due_time",
           },
         },
       },
@@ -193,7 +193,7 @@ const testConfig: TestConfig = {
             description: "taskThree",
             status: "in-progress",
             createdAt: "in_due_time",
-            updatedAt: "in_due_time"
+            updatedAt: "in_due_time",
           },
         },
       },
@@ -256,7 +256,7 @@ Deno.test(
     assertEquals(results, expected);
 
     const jsonTasks = getFileTasks();
-    
+
     assertEquals(jsonTasks, [expected.task]);
   },
 );
@@ -303,7 +303,9 @@ Deno.test(
     }
 
     const jsonTasks = getFileTasks();
-    const tasks: Task[] = config.map((instance: TestInstance) => instance.expected.task!);
+    const tasks: Task[] = config.map((instance: TestInstance) =>
+      instance.expected.task!
+    );
     assertEquals(tasks, jsonTasks);
   },
 );

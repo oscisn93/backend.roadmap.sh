@@ -4,9 +4,10 @@ import (
 	"context"
 	"database/sql"
 	"fmt"
-	"github.com/oscisn93/backend.roadmap.sh/tree/main/github-user-activity/internal/cache/libsql"
-	_ "github.com/tursodatabase/go-libsql"
 	"os"
+
+	"github.com/oscisn93/backend.roadmap.sh/tree/main/github-user-activity/cmd/cache/libsql"
+	_ "github.com/tursodatabase/go-libsql"
 )
 
 var dbName string = "file:./local.db"
@@ -17,7 +18,7 @@ type Cache struct {
 }
 
 func New() *Cache {
-  cache := &Cache{}
+	cache := &Cache{}
 	cache.Ctx = context.Background()
 	db, err := sql.Open("libsql", dbName)
 	if err != nil {
@@ -28,4 +29,3 @@ func New() *Cache {
 	cache.Client = libsql.New(db)
 	return cache
 }
-

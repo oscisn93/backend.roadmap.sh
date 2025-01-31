@@ -1,5 +1,5 @@
 // @ts-ignore: Deno std lib
-import { parse } from "@std/flags";
+import { parseArgs } from "jsr:@std/cli/parse-args";
 import { CLI } from "./cli.ts";
 
 const timestampProvider = {
@@ -11,7 +11,7 @@ const timestampProvider = {
 };
 
 // @ts-ignore: Deno namespace
-const args = parse(Deno.args)._;
+const args = parseArgs(Deno.args)._;
 const cli = new CLI(timestampProvider);
 const cmd = args.join(" ");
 const results = await cli.runCommand(args);

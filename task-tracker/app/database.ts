@@ -1,8 +1,8 @@
 import {
   ActionStatus,
   Task,
-  TaskStatus,
   TaskMutationResult,
+  TaskStatus,
   TimestampProvider,
 } from "./types.ts";
 
@@ -55,9 +55,7 @@ export class Database {
 
   printTask(task: Task): void {
     console.log(
-      `{ id: ${task.id}, description: ${task.description}, status: ${
-        task.status
-      }, createdAt: ${task.createdAt}${
+      `{ id: ${task.id}, description: ${task.description}, status: ${task.status}, createdAt: ${task.createdAt}${
         task.updatedAt ? `, updatedAt: ${task.updatedAt} ` : " "
       }}`,
     );
@@ -82,7 +80,7 @@ export class Database {
     return {
       id,
       status: "SUCCESS" as ActionStatus,
-      task
+      task,
     };
   }
 
@@ -125,7 +123,7 @@ export class Database {
     return {
       id,
       status: "SUCCESS" as ActionStatus,
-      task
+      task,
     };
   }
 
@@ -144,7 +142,7 @@ export class Database {
     return {
       id,
       status: "SUCCESS" as ActionStatus,
-      task
+      task,
     };
   }
 
@@ -154,7 +152,7 @@ export class Database {
       return {
         id,
         status: "FAILURE" as ActionStatus,
-        task: null
+        task: null,
       };
     }
     this.tasks = this.tasks.filter((task) => task.id !== id);

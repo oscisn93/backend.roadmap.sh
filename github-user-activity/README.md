@@ -9,6 +9,11 @@
 - users should be able to provide a valid github username and see the username's user's activity in the terminal.
 - Utilize the endpoint https://api.github.com/users/<username>/events
 - Display the returned data in the terminal
+- NOTE: You must generate a github personal access token with public/default permissions. You will then create a .env file and define insert the token like so:
+
+```sh
+GITHUB_PUBLIC_API_TOKEN=[github_auth_token]
+```
 
 ### Constraints
 

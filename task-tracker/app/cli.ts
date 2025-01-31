@@ -1,4 +1,4 @@
-import type { CommandAction, TimestampProvider, TaskStatus } from "./types.ts";
+import type { CommandAction, TaskStatus, TimestampProvider } from "./types.ts";
 import { Database } from "./database.ts";
 
 export const ADD_MISSIING_ARG =

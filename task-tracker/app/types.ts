@@ -15,7 +15,7 @@ export type Nullable<T> = T | null;
 export type TaskMutationResult = {
   id: number;
   status: ActionStatus;
-  task: Nullable<Task>
+  task: Nullable<Task>;
 };
 
 export type CommandAction =
