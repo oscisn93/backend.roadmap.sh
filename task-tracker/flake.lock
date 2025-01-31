@@ -1,5 +1,21 @@
 {
   "nodes": {
+    "deno": {
+      "flake": false,
+      "locked": {
+        "lastModified": 1738303706,
+        "narHash": "sha256-dWjGQc1uV4OT9pWfytZnDgzhSLO+K+2K36RphXmFSYQ=",
+        "owner": "denoland",
+        "repo": "deno",
+        "rev": "08cc22105f092f556f463e9245a3427d319d4b13",
+        "type": "github"
+      },
+      "original": {
+        "owner": "denoland",
+        "repo": "deno",
+        "type": "github"
+      }
+    },
     "nixpkgs": {
       "locked": {
         "lastModified": 1738142207,
@@ -18,6 +34,7 @@
     },
     "root": {
       "inputs": {
+        "deno": "deno",
         "nixpkgs": "nixpkgs"
       }
     }
